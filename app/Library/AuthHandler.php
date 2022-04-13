@@ -11,25 +11,33 @@
 		}
 
 		private static $filename = null;
+		private static $res = array();
 
 		public function __construct(){
 			self::$filename = storage_path('usr_data.json');
 		}
 	
 		public static function login( $username, $password ){
-
+	
 			$usr_data = self::usr_data();
 
-			for( $num = 0; $num < count($usr_data);$num++){
-				if( $usr_data['user'][$num]['username'] == $username ){
-					if( $usr_data['user'][$num]['password'] == md5($password)){
-						return array('status'=> true, 'user'=> $usr_data['user'][$num]);
+			$i = 0;
+			foreach( $usr_data as $dd ){
+
+				if( array_key_exists($username, $dd)){
+					if( $dd[$username]['password'] == $password){
+						return array('status'=>1);
+						break;
 					}else{
-						return array('status'=>false, 'msg'=>'invalid password');
+						return array('status'=>0, 'msg'=>'invalid password');
+						break;
 					}
-				}else{
-					return array('status'=>false, 'msg'=>'user not found');
 				}
+				$i++;
+			}
+
+			if( $i == count($usr_data)){
+				return array('status'=>0, 'msg'=>'user not found');
 			}
 
 		}
@@ -39,9 +47,9 @@
 
 			$usr_data = self::usr_data();
 
-			$inp = array("username"=>$username, "name"=>$name, "password"=>md5($password));
+			$inp = array($username=>array("name"=>$name, "password"=>$password));
 
-			array_push( $usr_data['user'], $inp);
+			array_push( $usr_data, $inp);
 
 			$json_data = json_encode($usr_data, JSON_PRETTY_PRINT);
 

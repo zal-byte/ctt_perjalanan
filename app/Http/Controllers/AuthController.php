@@ -29,8 +29,10 @@ class AuthController extends Controller
         $response = AuthHandler::login( $username, $password);
 
 
-        if( $response['status'] == true){
+        if( $response['status'] == 1){
             Session::put('login', true);
+            Session::put("username", $username);
+
             echo json_encode($response);
         }else{
             echo json_encode($response);
@@ -54,6 +56,7 @@ class AuthController extends Controller
 
     public function logout(){
         Session::forget('login');
+        Session::forget("username");
         return redirect('/auth/login');
     }
 

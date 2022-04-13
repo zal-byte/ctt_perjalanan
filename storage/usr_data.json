@@ -1,19 +1,20 @@
-{
-    "user": [
-        {
-            "username": "admin",
-            "name": "admin",
-            "password": "0192023a7bbd73250516f069df18b500"
-        },
-        {
-            "username": "s",
-            "name": "sodfjs",
-            "password": "aea6380b5e33432e2f0abda224575d8a"
-        },
-        {
-            "username": "root",
-            "name": "root",
-            "password": "ff9830c42660c1dd1942844f8069b74a"
+[
+    {
+        "admin": {
+            "password": "root",
+            "name": "admin"
         }
-    ]
-}
+    },
+    {
+        "root00": {
+            "name": "Routersploit",
+            "password": "code00"
+        }
+    },
+    {
+        "kiyoshi": {
+            "name": "Kumakara kiyoshi",
+            "password": "root00"
+        }
+    }
+]

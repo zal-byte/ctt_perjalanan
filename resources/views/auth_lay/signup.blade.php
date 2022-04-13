@@ -127,7 +127,6 @@
 							}else{
 								//password doesn't match
 								$("#pw_msg").css({"display":"block"});
-								$("#pw_msg")
 								$("#verify_password").addClass("is-invalid");
 							}
 						}else{

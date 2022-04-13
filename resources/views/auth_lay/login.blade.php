@@ -15,8 +15,18 @@
 						<div class="form-group">
 							<form id="myForm">
 								<input type='text' id='username' placeholder="Username" required class="form-control">
+								<div class="bg-danger text-white text-center rounded p-1 mt-2" id="err_lay0" style="display: none;">
+									<i id="err_user">
+
+									</i>
+								</div>								
 								<br>
 								<input type='password' id='password' placeholder="Password" required class="form-control">
+								<div class="bg-danger text-white text-center rounded p-1 mt-2" id="err_lay1" style="display: none;">
+									<i id="err_pass">
+
+									</i>
+								</div>
 								<br>
 								<button id="submit_btn" class="btn btn-solid text-white bg-success" style="margin-right: 10px; width: 100%;">
 										Login
@@ -56,12 +66,20 @@
 								data: data,
 								url: '{{route("login_post")}}',
 								success: function(res){
-									var rep = JSON.parse(res);
-
-									if( rep['status'] == true){
-										window.location.replace('{{route("main_dashboard")}}');
+									
+									var res = JSON.parse(res);
+									if( res['status'] == 1){
+										window.location.replace('/main/dashboard');
 									}else{
-										alert(rep['status']);
+										if( res['msg'] == 'invalid password'){
+											$("#password").addClass("is-invalid");
+											$("#err_lay1").addClass("d-block");
+											$("#err_pass").html('Invalid password');
+										}else if( res['msg'] == 'user not found'){
+											$("#username").addClass("is-invalid");
+											$("#err_lay0").addClass("d-block");
+											$("#err_user").html("User not found");
+										}
 									}
 
 								}
