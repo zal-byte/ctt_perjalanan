@@ -51,7 +51,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<div class="justify-content-center d-flex">
+					<div class="justify-content-center">
 						<span class="fa-solid fa-circle-check fa-2xl" id='ic-res'></span>
 					</div>
 					<button type="button" class="fa-solid fa-xmark" onclick="$('#s_modal').modal('hide');"></button>
@@ -104,8 +104,10 @@
 									url:'{{route("signup_post")}}',
 									data:data,
 									success:function(res){
+										// alert(res);
 										var js = JSON.parse(res);
-										if(js['status']==true){
+										if(js['status']==1){
+											$("#log-i").css({"display":"block"});
 											$("#username").val("");
 											$("#password").val("");
 											$("#verify_password").val("");
@@ -113,10 +115,10 @@
 											$("#s_modal").modal('show');
 											$("#msg").html(js['msg']);
 										}else{
-											$("#log-i").css({"display":"block"});
+											$("#log-i").css({"display":"none"});
 											$("#s_modal").modal('show');
 											$("#msg").html(js['msg']);
-											$("#ic-res").toggleCss('fa-xmark fa-circle-exclamation');
+											$("#ic-res").toggleClass('fa-xmark fa-circle-exclamation');
 
 										}
 									}

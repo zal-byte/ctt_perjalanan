@@ -48,9 +48,9 @@ class AuthController extends Controller
 
         $response = AuthHandler::signup( $name, $username, $password);
 
-        if( $response['status'] ){
+        // if( $response['status'] ){
             echo json_encode($response);
-        }
+        // }
     }
 
 

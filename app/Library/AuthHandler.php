@@ -25,14 +25,14 @@
 			foreach( $usr_data as $dd ){
 
 				if( array_key_exists($username, $dd)){
-					if( $dd[$username]['password'] == $password){
+					if( $dd[$username]['password'] == hash('md5', $password)){
 						return array('status'=>1);
 						break;
 					}else{
 						return array('status'=>0, 'msg'=>'invalid password');
 						break;
 					}
-				}
+				}	
 				$i++;
 			}
 
@@ -42,22 +42,54 @@
 
 		}
 
+		private static function usrCheck($username){
+			$usr_data = self::usr_data();
+
+			$temp_data = array();
+
+			
+			foreach( $usr_data as $good ){
+				foreach ($good as $key => $value) {
+					// code...
+					array_push($temp_data, $key);
+				}
+			}
+
+			foreach($temp_data as $name ){
+				if( $name == $username){
+					return true;
+					break;
+				}else{
+					return false;
+					break;
+				}
+			}
+
+
+		}
+
 		public static function signup( $name, $username, $password ){
 
 
-			$usr_data = self::usr_data();
-
-			$inp = array($username=>array("name"=>$name, "password"=>$password));
-
-			array_push( $usr_data, $inp);
-
-			$json_data = json_encode($usr_data, JSON_PRETTY_PRINT);
-
-			if(file_put_contents(self::$filename, $json_data)){
-				return array('status'=>true,'msg'=>'Signup successfuly');
+			if( self::usrCheck( $username ) == true ){
+				return array('status'=>0, 'msg'=> $username . '. Used by another user.');
 			}else{
-				return array('status'=>false,'msg'=>'Signup unsuccessfuly');
+				$usr_data = self::usr_data();
+
+				$inp = array($username=>array("name"=>$name, "password"=>hash('md5', $password)));
+
+				array_push( $usr_data, $inp);
+
+				$json_data = json_encode($usr_data, JSON_PRETTY_PRINT);
+
+				if(file_put_contents(self::$filename, $json_data)){
+					return array('status'=>1,'msg'=>'Signup successfuly');
+				}else{
+					return array('status'=>0,'msg'=>'Signup unsuccessfuly');
+				}				
 			}
+
+
 			
 
 		}
