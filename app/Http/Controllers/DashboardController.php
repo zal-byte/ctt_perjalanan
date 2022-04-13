@@ -11,9 +11,6 @@ class DashboardController extends Controller
     	return view('dash_lay.main');
     }
 
+    
 
-    public function logout(){
-    	Session::forget('login');
-    	return redirect('/auth/login');
-    }
 }

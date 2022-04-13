@@ -22,7 +22,7 @@
 										Login
 								</button>
 								<p class="text-center mt-2">
-									Doesn't have any account ?, <a href="{{ route('signup')}}" style="text-decoration: none; color:blue;">
+									Doesn't have any account ?, <a href="{{ route('signup')}}" style="text-decoration: none; color:blue;"> Signup</a>.
 								</p>
 							</form>
 						</div>

@@ -21,7 +21,12 @@ Route::get('/auth/login', function(){
 	return view('auth_lay.login');
 })->name('login');
 
-Route::get('/auth/signup',[AuthController::class, 'signup'])->name('signup');
+Route::get('/auth/signup', function(){
+	if(Session::get('login')){
+		return redirect('/auth/login');
+	}
+	return view('auth_lay.signup');
+})->name('signup');
 
 Route::post('/auth/login_post', [AuthController::class, 'log_in'])->name('login_post');
 Route::post('/auth/signup_post', [AuthController::class, 'sign_up'])->name('signup_post');
@@ -33,4 +38,9 @@ Route::get('/main/dashboard', function(){
 	return view('dash_lay.main');
 })->name('main_dashboard');
 
-Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
+Route::get('/logout', function(){
+	if( Session::get('login')){
+		AuthController::logout();
+	}
+	return redirect('/auth/login');
+})->name('logout');
