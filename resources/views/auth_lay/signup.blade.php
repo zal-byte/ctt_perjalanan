@@ -11,35 +11,26 @@
 					Catatan Perjalanan | Daftar
 				</h3>
 				<form id="s_form">
-					<input type='text' id='username' placeholder="Username" required class="form-control">
-					<div id="e-1" class="bg-danger text-white rounded" style="margin-top: 5px;display: none;padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
-						<i id="usr_msg"></i>
-					</div>
+					<input type='text' id='username' placeholder="Nama pengguna" required class="form-control">
+					<i id="err_usr" class="d-hidden"></i>
 					<br>
-					<input type='text' id="name" placeholder="Full name" required class="form-control">
-					<div id="e-2" class="bg-danger text-white rounded" style="margin-top: 5px;display: none;padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
-						<i id="name_msg"></i>
-					</div>
+					<input type='text' id="name" placeholder="Nama lengkap" required class="form-control">
+					<i id="err_name" class="d-hidden"></i>
 					<br>
-					<input type='password' id='password' placeholder="Password" required class="form-control">
-					<div id="e-3" class="bg-danger text-white rounded" style="margin-top: 5px;display: none;padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
-						<i id="pass_msg"></i>
-					</div>
+					<input type='password' id='password' placeholder="Kata sandi" required class="form-control">
+					<i id="err_password" class="d-hidden"></i>
 					<br>
-					<input type="password" id="verify_password" placeholder="Verify password" required class="form-control">
-					<div id="e-4" class="bg-danger text-white rounded" style="margin-top: 5px;display: none;padding-left: 10px; padding-top: 10px; padding-bottom: 10px;">
-						<i id="pw_msg"></i>
-					</div>
+					<input type="password" id="verify_password" placeholder="Verifikasi kata sandi" required class="form-control">
+					<i id="err_verify_password" class="d-hidden"></i>
 					<br>
 					<div class="justify-content-center align-items-center">
 						<button id='s_submit' class="btn btn-solid text-white bg-success" style="width:100%;">
-							Signup
+							Daftar
 						</button>
 
 						<p class="mt-2 text-center">
-							Already have an account ?, <a href="{{route('login')}}" style="text-decoration:none;">
-								Login
-							</a>.
+							Sudah memiliki akun ?, <a href="{{route('login')}}" style="text-decoration:none;">
+								Masuk</a>.
 						</p>
 
 					</div>
@@ -127,20 +118,20 @@
 
 
 							}else{
-								//password doesn't match
-								$("#pw_msg").css({"display":"block"});
-								$("#verify_password").addClass("is-invalid");
+								$("#err_verify_password").addClass("text-center d-block bg-danger p-1 rounded text-white mt-1");	
+								$("#err_verify_password").html("password doesn't match");			
 							}
-						}else{
-							alert("Password length more than 5");	
+						}else{						
+							$("#err_password").addClass("text-center d-block bg-danger p-1 rounded text-white mt-1");
+							$("#err_password").html("password minimum 6 characters");
 						}
 					}else{
-						$("#e-2").css({"display":"block"});
-						$("#name_msg").html("Please fill the name field");
+						$("#err_name").addClass("text-center d-block bg-danger p-1 rounded text-white mt-1");
+						$("#err_name").html("What is your name ?");
 					}
 				}else{
-					$("#e-1").css({"display":"block"});
-					$("#usr_msg").html("Don't leave it blank");
+					$("#err_usr").addClass("text-center d-block bg-danger p-1 rounded text-white mt-1");
+					$("#err_usr").html("Don't leave it blank");
 				}
 			});
 		});

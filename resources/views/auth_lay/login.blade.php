@@ -14,14 +14,14 @@
 						<br>
 						<div class="form-group">
 							<form id="myForm">
-								<input type='text' id='username' placeholder="Username" required class="form-control">
+								<input type='text' id='username' placeholder="Nama pengguna" required class="form-control">
 								<div class="bg-danger text-white text-center rounded p-1 mt-2" id="err_lay0" style="display: none;">
 									<i id="err_user">
 
 									</i>
 								</div>								
 								<br>
-								<input type='password' id='password' placeholder="Password" required class="form-control">
+								<input type='password' id='password' placeholder="Kata sandi" required class="form-control">
 								<div class="bg-danger text-white text-center rounded p-1 mt-2" id="err_lay1" style="display: none;">
 									<i id="err_pass">
 
@@ -29,10 +29,10 @@
 								</div>
 								<br>
 								<button id="submit_btn" class="btn btn-solid text-white bg-success" style="margin-right: 10px; width: 100%;">
-										Login
+										Masuk
 								</button>
 								<p class="text-center mt-2">
-									Doesn't have any account ?, <a href="{{ route('signup')}}" style="text-decoration: none; color:blue;"> Signup</a>.
+									Belum punya akun ?, <a href="{{ route('signup')}}" style="text-decoration: none; color:blue;"> Daftar</a>.
 								</p>
 							</form>
 						</div>
