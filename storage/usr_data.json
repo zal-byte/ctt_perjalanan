@@ -6,29 +6,14 @@
             "password": "0192023a7bbd73250516f069df18b500"
         },
         {
-            "username": "root00",
-            "name": "root00",
+            "username": "s",
+            "name": "sodfjs",
             "password": "aea6380b5e33432e2f0abda224575d8a"
         },
         {
-            "username": "toor00",
-            "name": "toor00",
-            "password": "5a5bffd1b2ad0285463636f8527cfd15"
-        },
-        {
-            "username": "admoo",
-            "name": "admo",
-            "password": "8135c4a489e6029127f7caa8b554523c"
-        },
-        {
-            "username": "gooo",
-            "name": "gooo",
-            "password": "065acc9acbfe59faa951a0e2c4de8425"
-        },
-        {
-            "username": "groot",
-            "name": "groot",
-            "password": "8cf3ffc70cf8f7fb3bffa918142b0b58"
+            "username": "root",
+            "name": "root",
+            "password": "ff9830c42660c1dd1942844f8069b74a"
         }
     ]
 }
