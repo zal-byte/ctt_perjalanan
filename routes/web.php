@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,8 +14,23 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/auth/login', [AuthController::class, 'login'])->name('login');
+Route::get('/auth/login', function(){
+	if( Session::get('login') ){
+		return redirect('/main/dashboard');
+	}
+	return view('auth_lay.login');
+})->name('login');
+
 Route::get('/auth/signup',[AuthController::class, 'signup'])->name('signup');
 
-Route::post('/auth/login_post', [AuthController::class, 'log_in']);
-Route::post('/auth/signup_post', [AuthController::class, 'sign_up']);
+Route::post('/auth/login_post', [AuthController::class, 'log_in'])->name('login_post');
+Route::post('/auth/signup_post', [AuthController::class, 'sign_up'])->name('signup_post');
+
+Route::get('/main/dashboard', function(){
+	if( !Session::get('login')){
+		return redirect('/auth/login');
+	}
+	return view('dash_lay.main');
+})->name('main_dashboard');
+
+Route::get('/logout', [DashboardController::class, 'logout'])->name('logout');
