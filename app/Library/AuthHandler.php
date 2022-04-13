@@ -22,7 +22,7 @@
 
 			for( $num = 0; $num < count($usr_data);$num++){
 				if( $usr_data['user'][$num]['username'] == $username ){
-					if( $usr_data['user'][$num]['password'] == $password){
+					if( $usr_data['user'][$num]['password'] == md5($password)){
 						return array('status'=> true, 'user'=> $usr_data['user'][$num]);
 					}else{
 						return array('status'=>false);
@@ -31,6 +31,23 @@
 					echo 'user not found';
 				}
 			}
+
+		}
+
+		public static function signup( $name, $username, $password ){
+
+
+			$usr_data = self::usr_data();
+
+			$inp = array("username"=>$username, "name"=>$name, "password"=>md5($password));
+
+			array_push( $usr_data['user'], $inp);
+
+			$json_data = json_encode($usr_data, JSON_PRETTY_PRINT);
+
+			file_put_contents(self::$filename, $json_data);
+			
+			$usr_data = null;
 
 		}
 

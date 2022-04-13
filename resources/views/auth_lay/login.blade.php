@@ -3,8 +3,8 @@
 @section('authbody')
 		<div class="card shadow-sm border-0 mt-5" style="width: 30%;">
 				<div class="card-body">
-						<h3 class="text-center" style="font-weight: bold;">
-							Catatan Perjalanan
+						<h3 class="text-center mb-2">
+							Catatan Perjalanan | Masuk
 						</h3>
 						<p class="text-center">
 							<i>

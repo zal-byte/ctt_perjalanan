@@ -11,6 +11,10 @@
 <body>
 	<script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
 
+	<h3 class="text-center">
+		@yield('authtitle')
+	</h3>
+
 	<div class="d-flex justify-content-center align-items-center">
 		@yield('authbody')
 	</div>

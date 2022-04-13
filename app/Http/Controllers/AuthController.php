@@ -39,7 +39,12 @@ class AuthController extends Controller
     }
     
     public function sign_up( Request $request){
-      print_r( $request);
+
+        $username = $request->username;
+        $password = $request->password;
+        $name = $request->name;
+
+        AuthHandler::signup( $name, $username, $password);
     }
 
 

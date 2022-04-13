@@ -1,14 +1,9 @@
 {
-	"user": [
-		{
-			"username": "admin",
-			"name": "michael",
-			"password": "admin"
-		},
-		{
-			"username": "test",
-			"name": "ubi",
-			"password": "test"
-		}
-	]
+    "user": [
+        {
+            "username": "admin",
+            "name": "admin",
+            "password": "0192023a7bbd73250516f069df18b500"
+        }
+    ]
 }

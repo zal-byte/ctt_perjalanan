@@ -1,10 +1,15 @@
 @extends('../auth')
 
+
+
 @section('authbody')
 
 	<div class="card shadow-sm border-0 mt-5" style="width: 30%;">
 		<div class="card-body">
 			<div class="form-group">
+				<h3 class="text-center mb-2">
+					Catatan Perjalanan | Daftar
+				</h3>
 				<form id="s_form">
 					<input type='text' id='username' placeholder="Username" required class="form-control">
 					<br>
@@ -20,7 +25,7 @@
 						</button>
 
 						<p class="mt-2 text-center">
-							Already have an account ?, <a href="{{route('signup')}}" style="text-decoration:none;">
+							Already have an account ?, <a href="{{route('login')}}" style="text-decoration:none;">
 								Login
 							</a>.
 						</p>
@@ -50,15 +55,16 @@
 
 								$.ajaxSetup({
 									headers:{
-										'X-CSRF-TOKEN': $("meta[name=csrf-token]").attr('content');
+										'X-CSRF-TOKEN': $("meta[name=csrf-token]").attr('content')
 									}
 								});
 
 								$.ajax({
 									type:'POST',
 									url:'{{route("signup_post")}}',
+									data:data,
 									success:function(res){
-										
+										alert(res);
 									}
 								});
 
@@ -66,15 +72,16 @@
 
 							}else{
 								//password doesn't match
+								alert("Password doesn't match");
 							}
 						}else{
-
+							alert("Password length more than 5");	
 						}
 					}else{
-
+						alert("Please fill naem field");
 					}
 				}else{
-
+					alert("You need a username");
 				}
 			});
 		});
