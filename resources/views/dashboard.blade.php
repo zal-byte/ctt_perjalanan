@@ -9,7 +9,7 @@
 <body>
 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 
-	<div class="container">
+	<div class="container" style="margin-right: 10%;margin-left: 10%;">
 		@yield('dashbody')
 	</div>
 

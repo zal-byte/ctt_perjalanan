@@ -6,6 +6,11 @@
 						<h3 class="text-center" style="font-weight: bold;">
 							Catatan Perjalanan
 						</h3>
+						<p class="text-center">
+							<i>
+								Masukan kridensial kamu
+							</i>
+						</p>
 						<br>
 						<div class="form-group">
 							<form id="myForm">
