@@ -44,7 +44,11 @@ class AuthController extends Controller
         $password = $request->password;
         $name = $request->name;
 
-        AuthHandler::signup( $name, $username, $password);
+        $response = AuthHandler::signup( $name, $username, $password);
+
+        if( $response['status'] ){
+            echo json_encode($response);
+        }
     }
 
 

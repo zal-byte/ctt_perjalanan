@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('fontawesome/css/all.min.css')}}">
 	<title> User Authentication </title>
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -19,6 +20,6 @@
 		@yield('authbody')
 	</div>
 <script type="text/javascript" src="{{ asset('js/app.js')}}"></script>
-
+<script type="text/javascript" src="{{ asset('fontawesome/js/all.min.js')}}"></script>
 </body>
 </html>

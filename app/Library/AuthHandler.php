@@ -25,10 +25,10 @@
 					if( $usr_data['user'][$num]['password'] == md5($password)){
 						return array('status'=> true, 'user'=> $usr_data['user'][$num]);
 					}else{
-						return array('status'=>false);
+						return array('status'=>false, 'msg'=>'invalid password');
 					}
 				}else{
-					echo 'user not found';
+					return array('status'=>false, 'msg'=>'user not found');
 				}
 			}
 
@@ -45,9 +45,12 @@
 
 			$json_data = json_encode($usr_data, JSON_PRETTY_PRINT);
 
-			file_put_contents(self::$filename, $json_data);
+			if(file_put_contents(self::$filename, $json_data)){
+				return array('status'=>true,'msg'=>'Signup successfuly');
+			}else{
+				return array('status'=>false,'msg'=>'Signup unsuccessfuly');
+			}
 			
-			$usr_data = null;
 
 		}
 
