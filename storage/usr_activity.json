@@ -1,0 +1,22 @@
+[
+	{
+		"toor":[
+			{
+				"no": 1,
+				"date":"02-02-2022",
+				"location": "bandung",
+				"information":"lorem ipsum"
+			}
+		]
+	},
+	{
+		"ex":[
+			{
+				"no": 2,
+				"date":"02-02-2032",
+				"location": "bandung",
+				"information":"lorem ipsum"
+			}
+		]
+	}
+]

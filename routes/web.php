@@ -44,3 +44,11 @@ Route::get('/logout', function(){
 	}
 	return redirect('/auth/login');
 })->name('logout');
+
+
+Route::get('/usr/activity', function(){
+	if( !Session::get('username')){
+		return redirect('/auth/login');
+	}
+	DashboardController::usr_activity();
+})->name('get_usrActivity');

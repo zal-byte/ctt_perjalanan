@@ -61,7 +61,35 @@
 			</div>
 			<div class="col py-3">
 				@yield('dashbody')
+				<ul class="pagination mt-2 justify-content-center">
+					<li class="page-item">
+						<a href="#" class="page-link">
+							&laquo;
+						</a>
+					</li>
+					<li class="page-item">
+						<a href="#" class="page-link">
+							2
+						</a>
+					</li>
+					<li class="page-item">
+						<a href="#" class="page-link">
+							3
+						</a>
+					</li>
+					<li class="page-item">
+						<a href="#" class="page-link">
+							4
+						</a>
+					</li>
+					<li class="page-item">
+						<a href="#" class="page-link">
+							&raquo;
+						</a>
+					</li>
+				</ul>
 			</div>
+
 		</div>
 	</div>
 
