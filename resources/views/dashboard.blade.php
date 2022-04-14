@@ -8,15 +8,28 @@
 	<title> Catatan Perjalanan | Dashboard </title>
 </head>
 <body>
+<style>
+	hr {
+  border: 0;
+  clear:both;
+  display:block;
+  width: 96%;               
+  background-color:#FFFF00;
+  height: 1px;
+}
+</style>
 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 
 	<div class="container-fluid">
 		<div class="row flex-nowrap">		
 			<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
 				<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white text-decoration-none min-vh-100">
-					<img src="{{asset('img/avatar.png')}}" class="img-fluid mt-2 img-thumbnail" style="background-color: white; border-radius: 50px;">
-					<hr style="border-radius: 10px; border-width: 100px; border-color: white;">
-					<br>
+					<div class="row justify-content-center align-middle align-items-center">
+						<img src="{{asset('img/avatar.png')}}" class="mt-2 img-thumbnail" style="background-color: white; border-radius: 50px; width: 100px; ">
+					</div>
+				
+
+					<hr>
 					<a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 						<span class="fs-5 d-none d-sm-inline">
 							@php
@@ -24,9 +37,7 @@
 							@endphp
 						</span>
 					</a>
-
 					<hr>
-
 					<ul class="nav nav-fills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 
 						<li class="nav-item">
