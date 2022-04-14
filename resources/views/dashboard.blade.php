@@ -13,9 +13,9 @@
   border: 0;
   clear:both;
   display:block;
-  width: 96%;               
+  width: 96%;    
+  margin: 0;           
   background-color:#FFFF00;
-  height: 1px;
 }
 </style>
 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
@@ -24,30 +24,40 @@
 		<div class="row flex-nowrap">		
 			<div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
 				<div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white text-decoration-none min-vh-100">
-					<div class="row justify-content-center align-middle align-items-center">
-						<img src="{{asset('img/avatar.png')}}" class="mt-2 img-thumbnail" style="background-color: white; border-radius: 50px; width: 100px; ">
-					</div>
-				
-
-					<hr>
-					<a href="#" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+					<span class=" fs-5 text-center" style="width:100%;">
+						CaPer
+					</span>
+					<i class="text-center" style="width:100%;"> Catatan Perjalanan </i>
+					<img src="{{asset('img/avatar.png')}}" class="mt-2 img-thumbnail img-fluid" style="background-color: white; border-radius: 50px; ">
+					<!-- <a href="#" class="d-flex align-middle align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
 						<span class="fs-5 d-none d-sm-inline">
 							@php
 								echo Session::get('username');
 							@endphp
 						</span>
-					</a>
+					</a> -->
+
+					<span class="fs-5 text-center" style="width:100%;">
+						@php echo Session::get('username');
+						@endphp
+					</span>
 					<hr>
-					<ul class="nav nav-fills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+					<ul class="nav mt-2 nav-fills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
 
 						<li class="nav-item">
 							<a href="#" class="nav-link align-middle px-0">
-								<span class="fa-solid fa-home"></span> Menu	
+								<span class="fas fa-user"></span> Profil
 							</a>
 						</li>
 
 						<li class="nav-item">
-							<a href="{{route('logout')}}" class="nav-link align-middle px-0">
+							<a href="#" class="nav-link align-middle px-0">
+								<span class="fas fa-history"></span> Riwayat Perjalanan	
+							</a>
+						</li>
+
+						<li class="nav-item">
+							<a onclick="logout_verify()" class="nav-link align-middle px-0">
 								<span class="fa-solid fa-sign-out">
 								</span> Logout
 							</a>
@@ -62,7 +72,38 @@
 		</div>
 	</div>
 
+
+	<div class="modal fade" id='logout-modal' role='dialog' tabindex='-1'>
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title">
+						Keluar?
+					</h3>
+				</div>
+				<div class="modal-body">
+					<p>
+						Apakah kamu yakin ingin keluar?
+					</p>
+				</div>
+				<div class="modal-footer">
+					<a href="{{route('logout')}}" class="btn btn-solid bg-info text-white text-decoration-none">
+						Ya
+					</a>
+					<a onclick="$('#logout-modal').modal('hide');" class="btn btn-solid bg-warning text-white text-decoration-none">
+						Tidak
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
 <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 <script type="text/javascript" src="{{asset('fontawesome/js/all.min.js')}}"></script>
+<script type="text/javascript">
+	function logout_verify(){
+		$("#logout-modal").modal('show');
+	}
+</script>
 </body>
 </html>
