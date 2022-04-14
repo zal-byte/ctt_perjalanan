@@ -29,13 +29,6 @@
 					</span>
 					<i class="text-center" style="width:100%;"> Catatan Perjalanan </i>
 					<img src="{{asset('img/avatar.png')}}" class="mt-2 img-thumbnail img-fluid" style="background-color: white; border-radius: 50px; ">
-					<!-- <a href="#" class="d-flex align-middle align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-						<span class="fs-5 d-none d-sm-inline">
-							@php
-								echo Session::get('username');
-							@endphp
-						</span>
-					</a> -->
 
 					<span class="fs-5 text-center" style="width:100%;">
 						@php echo Session::get('username');
