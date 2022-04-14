@@ -1,6 +1,7 @@
 @extends('../auth')
 
 @section('authbody')
+
 		<div class="card shadow-sm border-0 mt-5" style="width: 30%;">
 				<div class="card-body">
 						<h3 class="text-center mb-2">
