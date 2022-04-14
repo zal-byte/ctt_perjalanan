@@ -5,11 +5,21 @@
 
 	<div class="card border-0 shadow-sm">
 		<div class="card-body">
-			<p class="text-center">
-				<a href="{{route('logout')}}">
-					Logout
-				</a>
-			</p>
+			<table class="table">
+				<thead>
+					<tr>
+						<td>
+							No
+						</td>
+						<td>
+							Date
+						</td>
+						<td>
+							Place
+						</td>
+					</tr>
+				</thead>
+			</table>
 		</div>
 	</div>
 
