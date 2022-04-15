@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('fontawesome/css/all.min.css')}}">
 	<title> Catatan Perjalanan | Dashboard </title>
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
 <style>

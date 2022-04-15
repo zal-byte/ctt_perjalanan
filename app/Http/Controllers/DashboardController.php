@@ -21,7 +21,17 @@ class DashboardController extends Controller
     }
 
     public function add_activity( Request $request ){
-        
+
+        $date = $request->date;
+        $time = $request->time;
+        $location = $request->location;
+        $temperature = $request->temperature;
+        $information = $request->information;
+
+        $response = UserActivity::addUserActivity( $date, $time, $location, $temperature, $information );
+
+        echo json_encode( $response );
+
     }
 
     

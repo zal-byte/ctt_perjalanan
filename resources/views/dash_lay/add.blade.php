@@ -68,10 +68,63 @@
 		</div>
 	</div>
 
+	<div class="modal fade" id="add-modal" role='dialog' tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h3 class="modal-title" id="add-title">
+
+					</h3>
+				</div>
+				<div class="modal-body">
+					<p id="msg">
+
+					</p>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-solid btn-warning text-white" onclick="$('#add-modal').modal('hide');"> Tutup </button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<script type="text/javascript">
 		$(document).ready(function(){
 			$("#submit_btn_add").on('click', function(e){
 				e.preventDefault();
+
+				var date = $("#date").val();
+				var location = $("#location").val();
+				var time = $("#time").val();
+				var temperature = $("#temperature").val();
+				var information = $("#information").val();
+
+				var data = "date=" + date + "&location=" + location + "&time=" + time + "&temperature=" + temperature + "&information=" + information;
+
+				$.ajaxSetup({
+					headers:{
+						'X-CSRF-TOKEN': $("meta[name=csrf-token]").attr('content')
+					}
+				});
+
+				$.ajax({
+					type:'POST',
+					url:"{{route('add_activity')}}",
+					data:data,
+					success:function( res ){
+						var jso = JSON.parse( res );
+						if( jso['status'] == 1){
+							$("#add-title").html("Berhasil :)");
+							$("#add-modal").modal('show');
+							$("#msg").html(jso['msg']);
+						}else{
+							$("#add-title").html("Error :(");
+							$("#add-modal").modal('show');
+							$("#msg").html(jso['msg']);
+						}
+					}
+				});
+
 			});
 		});
 	</script>

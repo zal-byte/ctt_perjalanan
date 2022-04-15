@@ -1,0 +1,10 @@
+2022-04-01|17:20|Bandung|33|Test
+2022-04-15|19:19|Jakarta|33|Hello
+2022-04-15|17:29|Surabaya|33|Jogjakarta
+2022-04-15|17:17|Sumatra|33|Testing
+2022-04-15|18:18|Papua|33|Testi
+2022-04-15|17:17|Bandung|33|testingss
+2022-04-15|17:17|Bandung|33|Hello World
+2022-04-13|17:27|Bandung|34|Hello World
+2022-04-11|11:11|Osaka|33|testing
+2022-04-15|19:20|Karawang|33|Yes
