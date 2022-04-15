@@ -32,14 +32,14 @@
 						<div class="form-group">
 							<form id="myForm">
 								<input type='text' id='nik' placeholder="NIK" required class="form-control">
-								<div class="bg-danger text-white text-center rounded p-1 mt-2" id="err_lay0" style="display: none;">
+								<div class="bg-danger text-white text-center rounded p-1 mt-2 d-none" id="err_lay0">
 									<i id="err_nik">
 
 									</i>
 								</div>								
 								<br>
 								<input type='text' id='name' placeholder="name" required class="form-control">
-								<div class="bg-danger text-white text-center rounded p-1 mt-2" id="err_lay1" style="display: none;">
+								<div class="bg-danger text-white text-center rounded p-1 mt-2 d-none" id="err_lay1">
 									<i id="err_name">
 
 									</i>
@@ -59,7 +59,7 @@
 									</div>
 								</div>
 
-								<p id="res" class="p-2 mt-2 d-none rounded bg-warning text-white">
+								<p id="res" class="p-2 mt-2 d-none rounded text-white">
 
 								</p>
 							</form>
@@ -98,22 +98,32 @@
 								success:function(res){
 									var jso = JSON.parse(res);
 									if(jso['status']==1){
+										$("#res").html(jso['msg']);
+										$("#res").addClass("bg-success");
 										$("#res").toggleClass("d-none d-block");
-										$("#res").toggleClass("bg-warning bg-success");
-										$("#res").html(jso['msg']);
+
+										setTimeout(function(){
+											$("#res").toggleClass("d-block d-none");
+										}, 3000);
 									}else{
-										$("#res").toggleClass('d-none d-block');
-										$("#res").toggleClass("bg-success bg-warning");
 										$("#res").html(jso['msg']);
+										$("#res").addClass("bg-warning");
+										$("#res").toggleClass("d-none d-block");
+
+										setTimeout(function(){
+											$("#res").toggleClass("d-block d-none");
+										}, 3000);
 									}
 								}
 							});	
 
 						}else{
-
+							$("#err_lay1").toggleClass("d-none d-block");
+							$("#err_name").html("Isi Nama dengan benar");
 						}
 					}else{
-
+						$("#err_lay0").toggleClass("d-none d-block");
+						$("#err_nik").html("Isi NIK dengan benar");
 					}
 				});
 
@@ -153,10 +163,12 @@
 								}
 							});
 						}else{
-							
+							$("#err_lay1").toggleClass("d-none d-block");
+							$("#err_name").html("Masukan Nama dengan benar");
 						}
 					}else{
-						
+						$("#err_lay0").toggleClass("d-none d-block");
+						$("#err_nik").html("Masukan NIK dengan benar");
 					}
 				});
 			});
