@@ -23,40 +23,39 @@ class AuthController extends Controller
 
     public function log_in( Request $request ){
 
-        $username = $request->username;
-        $password = $request->password;
+        $nik = $request->nik;
+        $name = $request->name;
 
-        $response = AuthHandler::login( $username, $password);
+        $response = AuthHandler::login( $nik, $name);
 
+        print_r($response);
+        // if( $response['status'] == 1){
+        //     Session::put('login', true);
+        //     Session::put("nik", $nik);
 
-        if( $response['status'] == 1){
-            Session::put('login', true);
-            Session::put("username", $username);
-
-            echo json_encode($response);
-        }else{
-            echo json_encode($response);
-        }
+        //     echo json_encode($response);
+        // }else{
+        //     echo json_encode($response);
+        // }
 
     }
     
     public function sign_up( Request $request){
 
-        $username = $request->username;
-        $password = $request->password;
+        $nik = $request->nik;
         $name = $request->name;
 
-        $response = AuthHandler::signup( $name, $username, $password);
+        $response = AuthHandler::signup( $nik, $name );
 
-        // if( $response['status'] ){
+        if( $response['status'] ){
             echo json_encode($response);
-        // }
+        }
     }
 
 
     public function logout(){
         Session::forget('login');
-        Session::forget("username");
+        Session::forget("nik");
         return redirect('/auth/login');
     }
 

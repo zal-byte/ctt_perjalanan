@@ -1,109 +1,83 @@
 <?php
 
 	namespace App\Library;
+
 	class AuthHandler{
 		private static $instance = null;
 		public static function getInstance(){
-			if(self::$instance == null){
+			if( self::$instance == null ){
 				self::$instance = new AuthHandler();
 			}
 			return self::$instance;
 		}
 
 		private static $filename = null;
-		private static $res = array();
 
 		public function __construct(){
-			self::$filename = storage_path('usr_data.json');
-		}
-	
-		public static function login( $username, $password ){
-	
-			$usr_data = self::usr_data();
-
-			$i = 0;
-			foreach( $usr_data as $dd ){
-
-				if( array_key_exists($username, $dd)){
-					if( $dd[$username]['password'] == hash('md5', $password)){
-						return array('status'=>1);
-						break;
-					}else{
-						return array('status'=>0, 'msg'=>'invalid password');
-						break;
-					}
-				}	
-				$i++;
-			}
-
-			if( $i == count($usr_data)){
-				return array('status'=>0, 'msg'=>'user not found');
-			}
-
+			self::$filename = storage_path('config.txt');
 		}
 
-		private static function usrCheck($username){
-			$usr_data = self::usr_data();
+		public static function login( $nik, $name ){
+			$data = self::getConfig();
 
-			$temp_data = array();
-
-			
-			foreach( $usr_data as $good ){
-				foreach ($good as $key => $value) {
-					// code...
-					array_push($temp_data, $key);
-				}
-			}
-
-			foreach($temp_data as $name ){
-				if( $name == $username){
-					return true;
-					break;
+			if( in_array($nik, self::getNik($data))){
+				if( in_array($name, self::getName($data))){
+					//login successfuly
+					return array('status'=>1);
 				}else{
-					return false;
-					break;
+					return array('status'=>0, 'msg'=>'Nama salah');
+					//invalid name
 				}
-			}
-
-
-		}
-
-		public static function signup( $name, $username, $password ){
-
-
-			if( self::usrCheck( $username ) == true ){
-				return array('status'=>0, 'msg'=> $username . '. Used by another user.');
 			}else{
-				$usr_data = self::usr_data();
-
-				$inp = array($username=>array("name"=>$name, "password"=>hash('md5', $password)));
-
-				array_push( $usr_data, $inp);
-
-				$json_data = json_encode($usr_data, JSON_PRETTY_PRINT);
-
-				if(file_put_contents(self::$filename, $json_data)){
-					return array('status'=>1,'msg'=>'Signup successfuly');
-				}else{
-					return array('status'=>0,'msg'=>'Signup unsuccessfuly');
-				}				
+				return array('status'=>0,'msg'=>'NIK tidak ditemukan');
+				//user not found
 			}
 
-
-			
-
 		}
 
-
-
-		private static function usr_data(){
-
-			$decoded = json_decode(file_get_contents(self::$filename),1);
-			return $decoded;
+		private static function getNik($data){
+			$temp_nik = array();
+			foreach($data as $val ){
+				array_push($temp_nik,explode('|', $val)[0]);
+			}
+			return $temp_nik;
 		}
 
+		private static function getName( $data ){
+			$temp_name = array();
+			foreach($data as $val){
+				array_push($temp_name, explode('|', $val)[1]);
+			}
+			return $temp_name;
+		}
+
+		public static function signup( $nik, $name ){
+			$file = fopen(self::$filename, 'a+');
+
+			$data = self::getConfig();
+
+			$format = $nik . "|" . $name . "\n";
+
+
+			if( in_array($nik, self::getNik($data))){
+				//user already exists
+				return array('status'=>0,'msg'=>'NIK ini telah terdaftar.');
+			}else{
+				//continue
+				if( fwrite($file, $format) ){
+					return array('status'=>1,'msg'=>'Daftar berhasil');
+				}else{
+					return array('status'=>0,'msg'=>'Gagal daftar');
+				}
+				fclose($file);
+			}
+		}
+
+		private static function getConfig(){
+			$data = file_get_contents(self::$filename);
+
+			return explode("\n", trim($data));
+
+		}
 	}
-
-
-
 ?>

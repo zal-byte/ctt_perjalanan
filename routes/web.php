@@ -18,15 +18,9 @@ Route::get('/auth/login', function(){
 	if( Session::get('login') ){
 		return redirect('/main/dashboard');
 	}
-	return view('auth_lay.login');
-})->name('login');
+	return view('auth');
+})->name('auth');
 
-Route::get('/auth/signup', function(){
-	if(Session::get('login')){
-		return redirect('/auth/login');
-	}
-	return view('auth_lay.signup');
-})->name('signup');
 
 Route::post('/auth/login_post', [AuthController::class, 'log_in'])->name('login_post');
 Route::post('/auth/signup_post', [AuthController::class, 'sign_up'])->name('signup_post');
