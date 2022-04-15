@@ -32,6 +32,13 @@ Route::get('/main/dashboard', function(){
 	return view('dash_lay.main');
 })->name('main_dashboard');
 
+Route::get('/main/add', function(){
+	if(!Session::get('login')){
+		return redirect('/auth/login');
+	}
+	return view('dash_lay.add');
+})->name('main_add');
+
 Route::get('/logout', function(){
 	if( Session::get('login')){
 		AuthController::logout();

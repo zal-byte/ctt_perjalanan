@@ -28,7 +28,7 @@
 								Masukan kridensial kamu
 							</i>
 						</p>
-						<br>
+						<hr>
 						<div class="form-group">
 							<form id="myForm">
 								<input type='text' id='nik' placeholder="NIK" required class="form-control">
@@ -38,7 +38,7 @@
 									</i>
 								</div>								
 								<br>
-								<input type='text' id='name' placeholder="name" required class="form-control">
+								<input type='text' id='name' placeholder="Nama" required class="form-control">
 								<div class="bg-danger text-white text-center rounded p-1 mt-2 d-none" id="err_lay1">
 									<i id="err_name">
 

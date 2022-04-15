@@ -3,11 +3,42 @@
 
 @section('dashbody')
 
+
+	<style type="text/css">
+		@media only screen and (max-width: 768px){
+
+			#urut{
+				margin-top: 10px;
+			}
+		}
+	</style>
+	<div class="card border-0 shadow-sm mb-2 mt-2">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-3">
+					<p>
+						Urut berdasarkan
+					</p>
+				</div>
+				<div class="col-md-7">
+					<select class="form-select">
+						<option value="tanggal">Tanggal</option>
+						<option value="nama_lokasi">Nama lokasi</option>
+					</select>
+				</div>
+				<div class="col-md">
+					<button id="urut" class="btn btn-solid btn-info text-white" style="width:100%;">
+						Urutkan
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<div class="card border-0 shadow-sm">
 		<div class="card-body">
 			<div style="overflow: auto; height: 500px;">
 				<table class="table table-striped">
-
 					<thead class="sticky-top">
 						<tr class="bg-dark" style="color: white;">
 							<td>
