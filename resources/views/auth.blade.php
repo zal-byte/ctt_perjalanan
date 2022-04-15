@@ -155,7 +155,7 @@
 									var jso = JSON.parse(res);
 									if(jso['status']==1)
 									{
-										window.location.replace('/main/dashboard');
+										window.location.replace("@php echo Session::get('interact'); @endphp");
 									}else{
 										$("#res").toggleClass("d-none d-block");
 										$("#res").html(jso['msg']);

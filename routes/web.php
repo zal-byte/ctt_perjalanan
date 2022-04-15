@@ -24,13 +24,22 @@ Route::get('/auth/login', function(){
 
 Route::post('/auth/login_post', [AuthController::class, 'log_in'])->name('login_post');
 Route::post('/auth/signup_post', [AuthController::class, 'sign_up'])->name('signup_post');
+Route::post('/add/usr_activity', [DashboardController::class, 'add_activity'])->name('add_activity');
 
-Route::get('/main/dashboard', function(){
+
+Route::get('/main/welcome', function(){
 	if( !Session::get('login')){
 		return redirect('/auth/login');
 	}
-	return view('dash_lay.main');
-})->name('main_dashboard');
+	return view('dash_lay.welcome');
+})->name('main_welcome');
+
+Route::get('/main/view', function(){
+	if(!Session::get('login')){
+		return redirect('/auth/login');
+	}
+	return view('dash_lay.view');
+})->name('main_view');
 
 Route::get('/main/add', function(){
 	if(!Session::get('login')){

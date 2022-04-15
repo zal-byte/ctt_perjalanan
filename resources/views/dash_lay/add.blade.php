@@ -1,3 +1,9 @@
+@php
+
+	Session::put('interact', route('main_add'));
+
+@endphp
+
 @extends('../dashboard')
 
 @section('dashbody')

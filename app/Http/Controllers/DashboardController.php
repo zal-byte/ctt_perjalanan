@@ -20,6 +20,10 @@ class DashboardController extends Controller
     	print_r( UserActivity::getUserActivity('toor'));
     }
 
+    public function add_activity( Request $request ){
+        
+    }
+
     
 
 }
