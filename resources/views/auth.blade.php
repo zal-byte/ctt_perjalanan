@@ -58,6 +58,10 @@
 										</button>
 									</div>
 								</div>
+
+								<p id="res" class="p-2 mt-2 d-none rounded bg-warning text-white">
+
+								</p>
 							</form>
 						</div>
 				</div>
@@ -92,7 +96,16 @@
 								url:"{{route('signup_post')}}",
 								data: data,
 								success:function(res){
-									alert(res);
+									var jso = JSON.parse(res);
+									if(jso['status']==1){
+										$("#res").toggleClass("d-none d-block");
+										$("#res").toggleClass("bg-warning bg-success");
+										$("#res").html(jso['msg']);
+									}else{
+										$("#res").toggleClass('d-none d-block');
+										$("#res").toggleClass("bg-success bg-warning");
+										$("#res").html(jso['msg']);
+									}
 								}
 							});	
 
@@ -129,12 +142,13 @@
 								data: data,
 								url: '{{route("login_post")}}',
 								success: function(res){
-									alert(res);
 									var jso = JSON.parse(res);
-									if(jso['status']==1){
+									if(jso['status']==1)
+									{
 										window.location.replace('/main/dashboard');
 									}else{
-										alert(res['msg']);
+										$("#res").toggleClass("d-none d-block");
+										$("#res").html(jso['msg']);
 									}
 								}
 							});

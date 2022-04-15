@@ -28,15 +28,15 @@ class AuthController extends Controller
 
         $response = AuthHandler::login( $nik, $name);
 
-        print_r($response);
-        // if( $response['status'] == 1){
-        //     Session::put('login', true);
-        //     Session::put("nik", $nik);
+        // print_r($response);
+        if( $response['status'] == 1){
+            Session::put('login', true);
+            Session::put("nik", $nik);
 
-        //     echo json_encode($response);
-        // }else{
-        //     echo json_encode($response);
-        // }
+            echo json_encode($response);
+        }else{
+            echo json_encode($response);
+        }
 
     }
     
@@ -47,9 +47,7 @@ class AuthController extends Controller
 
         $response = AuthHandler::signup( $nik, $name );
 
-        if( $response['status'] ){
-            echo json_encode($response);
-        }
+        echo json_encode($response);
     }
 
 
