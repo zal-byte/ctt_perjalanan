@@ -12,13 +12,13 @@ class DashboardController extends Controller
 {
     //
    
-    public function view( $nik ){
+    public function view(  ){
         if(!Session::get('login'))
         {
             return redirect('/auth/login');
         }
 
-        return view('dash_lay.view', ['activity'=>UserActivity::getUserActivity($nik)]);
+        return view('dash_lay.view', ['activity'=>UserActivity::getUserActivity(Session::get('nik'))]);
     }
 
     public function add_activity( Request $request ){

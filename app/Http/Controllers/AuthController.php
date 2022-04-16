@@ -25,13 +25,14 @@ class AuthController extends Controller
 
         $nik = $request->nik;
         $name = $request->name;
+        
+        Session::put("nik", $nik);
 
         $response = AuthHandler::login( $nik, $name);
 
         // print_r($response);
         if( $response['status'] == 1){
             Session::put('login', true);
-            Session::put("nik", $nik);
 
             echo json_encode($response);
         }else{

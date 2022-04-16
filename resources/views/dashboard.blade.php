@@ -68,15 +68,15 @@ hr {
 								</li>
 							@endif
 
-							@if(url()->current() == url()->current() . Session::get('nik'))
+							@if(url()->current() == request()->getScheme() . "://" . request()->getHttpHost() . "/main/view")
 								<li class="list-group-item active">
-									<a href="/main/view/@php echo Session::get('nik'); @endphp" class="nav-link text-white text-center text-decoration-none">
+									<a href="/main/view/" class="nav-link text-white text-center text-decoration-none">
 										<span class="fa-solid fa-note-sticky"></span> Lihat
 									</a>
 								</li>
 							@else
 								<li class="list-group-item">
-									<a href="/main/view/@php echo Session::get('nik');@endphp" class="nav-link text-center text-decoration-none">
+									<a href="/main/view/" class="nav-link text-center text-decoration-none">
 										<span class="fa-solid fa-note-sticky"></span> Lihat
 									</a>
 								</li>
@@ -99,7 +99,7 @@ hr {
 
 
 
-							<li style="margin-left: 10px;" onclick="logout_verify()" class="list-group-item btn-solid btn bg-danger">
+							<li onclick="logout_verify()" class="list-group-item btn-solid btn bg-danger">
 								<a href="#" class="nav-link text-center text-decoration-none text-white">
 									<span class="fa fa-sign-out"></span> Keluar
 								</a>

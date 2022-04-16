@@ -1,9 +1,6 @@
+
 @php
-
-
-	$nik = explode('/', url()->current())[count(explode('/',url()->current())) - 1];
-
-	Session::put('interact', str_replace($nik, '', url()->current()) );
+	Session::put('interact', '/main/view' );
 
 @endphp
 

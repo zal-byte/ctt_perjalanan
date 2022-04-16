@@ -34,7 +34,7 @@ Route::get('/main/welcome', function(){
 	return view('dash_lay.welcome');
 })->name('main_welcome');
 
-Route::get('/main/view/{nik}', [DashboardController::class, 'view']);
+Route::get('/main/view/', [DashboardController::class, 'view']);
 
 Route::get('/main/add', function(){
 	if(!Session::get('login')){
