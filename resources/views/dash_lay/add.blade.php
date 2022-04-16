@@ -90,6 +90,9 @@
 
 	<script type="text/javascript">
 		$(document).ready(function(){
+			$("#myForm").on('submit', function(e){
+				e.preventDefault();
+			});
 			$("#submit_btn_add").on('click', function(e){
 				e.preventDefault();
 

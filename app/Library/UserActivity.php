@@ -15,36 +15,39 @@
 		private static $filename = null;
 
 		private static $res = array();
-
-		public function __construct(){
-			self::$filename = storage_path('usr_activity_' . Session::get("nik") . '.txt');
+		private static function checkUserActivity( $nik ){
+			self::$filename = storage_path("usr_activity_" . $nik . ".txt");
+			if(!file_exists(self::$filename)){
+				file_put_contents(self::$filename, '');
+			}
 		}
 
 		public static function getUserActivity( $nik ){
 
-			$user_data = self::usr_activity();
-			self::$res['usr_activity'] = array();
-			$i = 0;
-			foreach( $user_data as $data ){
-				if(isset($data[$nik])){
-					$re['date'] = $data[$nik][$i]['date'];
-					$re['time'] = $data[$nik][$i]['time'];
-					$re['location'] = $data[$nik][$i]['location'];
-					$re['temperature'] = $data[$nik][$i]['temperature'];
-					$re['information'] = $data[$nik][$i]['information'];
-					array_push(self::$res['usr_activity'], $re);
+			self::checkUserActivity( $nik );
 
-					break;					
-					$i++;
+			$data = self::usr_activity();
+
+			$temp_data = array();
+			$i = 0;
+			foreach( $data as $val ){
+				$temp_data[$i]=array();
+				foreach( explode("|", $val) as $go){
+					array_push( $temp_data[$i], $go);
 				}
+				$i++;
 			}
 
-			return self::$res;
+			
+			
 
+			return $temp_data;
 
 		}
 
-		public static function addUserActivity( $date, $time, $location, $temperature, $information ){
+		public static function addUserActivity( $nik, $date, $time, $location, $temperature, $information ){
+
+			self::checkUserActivity( $nik );
 
 			$format = $date . "|" . $time . "|" . $location . "|" . $temperature . "|" . $information . "\n";
 
@@ -60,8 +63,8 @@
 		}
 
 		private static function usr_activity(){
-			$decoded = json_decode(file_get_contents(self::$filename), 1);
-			return $decoded;
+			$data = explode("\n", trim(file_get_contents(self::$filename)));
+			return $data;
 		}
 	}
 

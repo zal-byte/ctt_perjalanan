@@ -16,7 +16,7 @@ use App\Http\Controllers\DashboardController;
 
 Route::get('/auth/login', function(){
 	if( Session::get('login') ){
-		return redirect('/main/dashboard');
+		return redirect('/main/view');
 	}
 	return view('auth');
 })->name('auth');
@@ -34,12 +34,7 @@ Route::get('/main/welcome', function(){
 	return view('dash_lay.welcome');
 })->name('main_welcome');
 
-Route::get('/main/view', function(){
-	if(!Session::get('login')){
-		return redirect('/auth/login');
-	}
-	return view('dash_lay.view');
-})->name('main_view');
+Route::get('/main/view/{nik}', [DashboardController::class, 'view']);
 
 Route::get('/main/add', function(){
 	if(!Session::get('login')){
@@ -55,10 +50,3 @@ Route::get('/logout', function(){
 	return redirect('/auth/login');
 })->name('logout');
 
-
-Route::get('/usr/activity', function(){
-	if( !Session::get('username')){
-		return redirect('/auth/login');
-	}
-	DashboardController::usr_activity();
-})->name('get_usrActivity');

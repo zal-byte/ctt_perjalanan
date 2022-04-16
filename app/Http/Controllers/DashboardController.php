@@ -11,13 +11,14 @@ UserActivity::getInstance();
 class DashboardController extends Controller
 {
     //
-    public function dashboard(){
-    	return view('dash_lay.main');
-    }
+   
+    public function view( $nik ){
+        if(!Session::get('login'))
+        {
+            return redirect('/auth/login');
+        }
 
-
-    public function usr_activity(){
-    	print_r( UserActivity::getUserActivity('toor'));
+        return view('dash_lay.view', ['activity'=>UserActivity::getUserActivity($nik)]);
     }
 
     public function add_activity( Request $request ){
@@ -28,7 +29,8 @@ class DashboardController extends Controller
         $temperature = $request->temperature;
         $information = $request->information;
 
-        $response = UserActivity::addUserActivity( $date, $time, $location, $temperature, $information );
+
+        $response = UserActivity::addUserActivity(Session::get('nik'), $date, $time, $location, $temperature, $information );
 
         echo json_encode( $response );
 

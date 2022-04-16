@@ -1,6 +1,6 @@
 @php
 
-	Session::put('interact', route('main_view'));
+	Session::put('interact', url()->current() );
 
 @endphp
 
@@ -54,6 +54,9 @@
 								Tanggal
 							</td>
 							<td>
+								Waktu
+							</td>
+							<td>
 								Lokasi
 							</td>
 							<td>
@@ -65,50 +68,29 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>
-								1
-							</td>
-							<td>
-								02-02-2022
-							</td>
-							<td>
-								Bandung
-							</td>
-							<td>
-								20<span>&#8451;</span>
-							</td>
-							<td>
-								ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-							</td>
-						</tr>
-						<tr>
-							<td>
-								2
-							</td>
-							<td>
-								02-02-2022
-							</td>
-							<td>
-								Jakarta
-							</td>
-							<td>
-								20<span>&#8451;</span>
-							</td>
-							<td>
-								ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-								proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-							</td>
-						</tr>
+						<!-- No, tanggal, waktu, lokasi, suhu, keterangan -->
+						@for($i=0; $i < count($activity);$i++)
+							<tr>
+								<td>
+									{{ $i + 1 }}
+								</td>
+								<td>
+									{{ $activity[$i][0] }}
+								</td>
+								<td>
+									{{ $activity[$i][1] }}
+								</td>
+								<td>
+									{{ $activity[$i][2] }}
+								</td>
+								<td>
+									{{ $activity[$i][3] }}
+								</td>
+								<td>
+									{{ $activity[$i][4] }}
+								</td>
+							</tr>
+						@endfor
 					</tbody>
 				</table>
 			</div>

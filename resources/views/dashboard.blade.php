@@ -68,15 +68,15 @@ hr {
 								</li>
 							@endif
 
-							@if(url()->current() == route('main_view'))
+							@if(url()->current() == url()->current() . Session::get('nik'))
 								<li class="list-group-item active">
-									<a href="{{route('main_view')}}" class="nav-link text-white text-center text-decoration-none">
+									<a href="/main/view/@php echo Session::get('nik'); @endphp" class="nav-link text-white text-center text-decoration-none">
 										<span class="fa-solid fa-note-sticky"></span> Lihat
 									</a>
 								</li>
 							@else
 								<li class="list-group-item">
-									<a href="{{route('main_view')}}" class="nav-link text-center text-decoration-none">
+									<a href="/main/view/@php echo Session::get('nik');@endphp" class="nav-link text-center text-decoration-none">
 										<span class="fa-solid fa-note-sticky"></span> Lihat
 									</a>
 								</li>
