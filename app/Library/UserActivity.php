@@ -72,20 +72,16 @@
 			self::checkUserActivity( Session::get('nik'));
 			$d = self::usr_activity();
 
-			$temp = array();
 
-			foreach($d as $dd){
-				array_push( $temp, trim($dd));
-			}
-
-			if(in_array($param, $temp)){
+			if(in_array($param['data'], $d)){
 				return 'ok';
 			}
+
 
 		}
 
 		private static function usr_activity(){
-			$txt = trim(file_get_contents(self::$filename));
+			$txt = file_get_contents(self::$filename);
 			if( strlen($txt) > 0 ){
 				$data = explode("{{%}}", $txt);
 			}else{

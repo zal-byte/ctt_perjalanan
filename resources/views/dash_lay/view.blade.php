@@ -148,24 +148,5 @@
 $(function() {
   $("#table").tablesorter();
 });
-	function del(id){
-		var data = $("#p-"+id).val();
-	
-		$.ajaxSetup({
-			headers:{
-				'X-CSRF-TOKEN': $("meta[name=csrf-token]").attr('content')
-			}
-		});
 
-		$.ajax({
-			type:'GET',
-			url:"{{route('del_data')}}",
-			data:"data="+data,
-			success:function(res)
-			{
-				alert(res);
-			}
-		});
-	}
-</script>
 @endsection

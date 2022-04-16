@@ -27,7 +27,7 @@ class DashboardController extends Controller
     public function delete( ){
         //authentication check
 
-        $res = UserActivity::delUserActivity( $_GET['data'] );
+        $res = UserActivity::delUserActivity( $_GET );
         print_r($res);
 
     }
