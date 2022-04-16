@@ -24,6 +24,14 @@ class DashboardController extends Controller
         return view('dash_lay.view', ['activity'=>UserActivity::getUserActivity(Session::get('nik'), $name)]);
     }
 
+    public function delete( ){
+        //authentication check
+
+        $res = UserActivity::delUserActivity( $_GET['data'] );
+        print_r($res);
+
+    }
+
     public function add_activity( Request $request ){
 
         $date = $request->date;

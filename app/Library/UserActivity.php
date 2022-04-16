@@ -32,9 +32,11 @@
 				$temp_data = array();
 				$i = 0;
 				foreach( $data as $val ){
-					$temp_data[$i]=array();
-					foreach( explode("|", $val) as $go){
-						array_push( $temp_data[$i], $go);
+					if($val != null ){
+						$temp_data[$i]=array();
+						foreach( explode("|", $val) as $go){
+							array_push( $temp_data[$i], $go);
+						}
 					}
 					$i++;
 				}
@@ -52,7 +54,8 @@
 
 			self::checkUserActivity( $nik );
 
-			$format = $date . "|" . $time . "|" . $location . "|" . $temperature . "|" . $information . "\n";
+
+			$format = $date . "|" . $time . "|" . $location . "|" . $temperature . "|" . $information . "{{%}}";
 
 			$file = fopen(self::$filename, 'a+');
 
@@ -65,10 +68,26 @@
 
 		}
 
+		public static function delUserActivity($param){
+			self::checkUserActivity( Session::get('nik'));
+			$d = self::usr_activity();
+
+			$temp = array();
+
+			foreach($d as $dd){
+				array_push( $temp, trim($dd));
+			}
+
+			if(in_array($param, $temp)){
+				return 'ok';
+			}
+
+		}
+
 		private static function usr_activity(){
 			$txt = trim(file_get_contents(self::$filename));
 			if( strlen($txt) > 0 ){
-				$data = explode("\n", $txt);
+				$data = explode("{{%}}", $txt);
 			}else{
 				$data = null;
 			}

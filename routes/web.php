@@ -37,6 +37,7 @@ Route::get('/main/welcome', function(){
 Route::get('/main/view/{name}', [DashboardController::class,'view'])->name('main_view');
 
 Route::get('/main/view', [DashboardController::class, 'view']);
+Route::get('/del/data/', [DashboardController::class, 'delete'])->name('del_data');
 
 Route::get('/main/add', function(){
 	if(!Session::get('login')){
