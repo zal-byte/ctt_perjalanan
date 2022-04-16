@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{{ asset('dist/css/theme.default.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('fontawesome/css/all.min.css')}}">
 	<title> Catatan Perjalanan | Dashboard </title>
@@ -36,11 +37,11 @@ hr {
 }
 </style>
 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
-
+<script type="text/javascript" src="{{asset('dist/js/jquery.tablesorter.js')}}"></script>
 	<div class="container p-3 mt-2">
 		<div class="row">
 			<div class="col-md">
-				<img src="{{asset('img/avatar.png')}}" class="img-fluid img-thumbnail" style="background-color: white;">
+				<img src="{{asset('img/png.png')}}" class="img-fluid" style="background-color: transparent;">
 			</div>
 			<div class="col-sm-9">
 				<div class="card border-0 shadow-sm">

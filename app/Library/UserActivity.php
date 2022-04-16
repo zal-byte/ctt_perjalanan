@@ -22,7 +22,7 @@
 			}
 		}
 
-		public static function getUserActivity( $nik ){
+		public static function getUserActivity( $nik, $sortby ){
 
 			self::checkUserActivity( $nik );
 

@@ -1,5 +1,6 @@
 
 @php
+	
 	Session::put('interact', '/main/view' );
 
 @endphp
@@ -18,39 +19,44 @@
 			}
 		}
 	</style>
-	<div class="card border-0 shadow-sm mb-2 mt-2">
+<!-- 	<div class="card border-0 shadow-sm mb-2 mt-2">
 		<div class="card-body">
-			<div class="row">
-				<div class="col-md-3">
-					<p>
-						Urut berdasarkan
-					</p>
+			<form method="GET" action='/main/view/' enctype="multipart/form-data">
+				<div class="row">
+					<div class="col-md-3">
+						<p>
+							Urut berdasarkan
+						</p>
+					</div>
+					<div class="col-md-7">
+						<select class="form-select" name="select">
+							<option value="date">Tanggal</option>
+							<option value="location">Nama lokasi</option>
+							<option value="temperature">Suhu tubuh</option>
+							<option value="time">Jam</option> 
+						</select>
+					</div>
+					<div class="col-md">
+						<button id="urut" class="btn btn-solid btn-info text-white" style="width:100%;">
+							Urutkan
+						</button>
+					</div>
 				</div>
-				<div class="col-md-7">
-					<select class="form-select">
-						<option value="tanggal">Tanggal</option>
-						<option value="nama_lokasi">Nama lokasi</option>
-					</select>
-				</div>
-				<div class="col-md">
-					<button id="urut" class="btn btn-solid btn-info text-white" style="width:100%;">
-						Urutkan
-					</button>
-				</div>
-			</div>
+			</form>
+
 		</div>
-	</div>
+	</div> -->
 
 	<div class="card border-0 shadow-sm">
 		<div class="card-body">
 			<div style="overflow: auto; height: 500px;">
-				<table class="table table-striped">
+				<table id='table' class="table tablesorter table-striped">
 					<thead class="sticky-top">
-						<tr class="bg-dark" style="color: white;">
-							<td>
+						<tr>
+							<td id="no">
 								No
 							</td>
-							<td>
+							<td id="date">
 								Tanggal
 							</td>
 							<td>
@@ -104,5 +110,9 @@
 			</div>
 		</div>
 	</div>
-
+<script type="text/javascript">
+$(function() {
+  $("#table").tablesorter();
+});
+</script>
 @endsection

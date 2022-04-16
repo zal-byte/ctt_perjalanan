@@ -12,13 +12,16 @@ class DashboardController extends Controller
 {
     //
    
-    public function view(  ){
+    public function view( ){
+
+        $name = isset($_GET['select']) ? $_GET['select'] : null;
+
         if(!Session::get('login'))
         {
             return redirect('/auth/login');
         }
 
-        return view('dash_lay.view', ['activity'=>UserActivity::getUserActivity(Session::get('nik'))]);
+        return view('dash_lay.view', ['activity'=>UserActivity::getUserActivity(Session::get('nik'), $name)]);
     }
 
     public function add_activity( Request $request ){
