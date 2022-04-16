@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Library\UserActivity;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,10 +35,8 @@ Route::get('/main/welcome', function(){
 	return view('dash_lay.welcome');
 })->name('main_welcome');
 
-Route::get('/main/view/{name}', [DashboardController::class,'view'])->name('main_view');
-
-Route::get('/main/view', [DashboardController::class, 'view']);
-Route::get('/del/data/', [DashboardController::class, 'delete'])->name('del_data');
+Route::get('/main/view', [DashboardController::class, 'view'])->name('main_view');
+Route::get('/del/data/{data}', [DashboardController::class, 'delete']);
 
 Route::get('/main/add', function(){
 	if(!Session::get('login')){

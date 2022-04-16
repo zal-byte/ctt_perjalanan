@@ -1,6 +1,10 @@
 @php
+	
+	use Illuminate\Support\Facades\Session;
 
 	Session::put('interact', route('main_add'));
+
+
 
 @endphp
 
@@ -89,6 +93,7 @@
 	</div>
 
 	<script type="text/javascript">
+
 		$(document).ready(function(){
 			$("#myForm").on('submit', function(e){
 				e.preventDefault();
@@ -101,6 +106,7 @@
 				var time = $("#time").val();
 				var temperature = $("#temperature").val();
 				var information = $("#information").val();
+
 
 				var data = "date=" + date + "&location=" + location + "&time=" + time + "&temperature=" + temperature + "&information=" + information;
 
@@ -115,12 +121,21 @@
 					url:"{{route('add_activity')}}",
 					data:data,
 					success:function( res ){
-						alert(res);
 						var jso = JSON.parse( res );
 						if( jso['status'] == 1){
+
+							
+
 							$("#add-title").html("Berhasil :)");
 							$("#add-modal").modal('show');
 							$("#msg").html(jso['msg']);
+
+							$("#date").val("");
+							$("#time").val("");
+							$("#location").val("");
+							$("#temperature").val("");
+							$("#information").val("");
+
 						}else{
 							$("#add-title").html("Error :(");
 							$("#add-modal").modal('show');

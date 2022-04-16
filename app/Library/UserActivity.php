@@ -22,6 +22,13 @@
 			}
 		}
 
+		public static function identifier(){
+			Session::put('identifier', Session::get('nik') ."_".uniqid());
+		}
+		public static function get_identifier(){
+			return Session::get('identifier');
+		}
+
 		public static function getUserActivity( $nik, $sortby ){
 
 			self::checkUserActivity( $nik );
@@ -53,9 +60,10 @@
 		public static function addUserActivity( $nik, $date, $time, $location, $temperature, $information ){
 
 			self::checkUserActivity( $nik );
+			self::identifier();
+			$identifier = self::get_identifier();
 
-
-			$format = $date . "|" . $time . "|" . $location . "|" . $temperature . "|" . $information . "{{%}}";
+			$format = $date . "|" . $time . "|" . $location . "|" . $temperature . "|" . $information . "|" . $identifier ."{{%}}";
 
 			$file = fopen(self::$filename, 'a+');
 
@@ -72,12 +80,42 @@
 			self::checkUserActivity( Session::get('nik'));
 			$d = self::usr_activity();
 
+			$temp_data= array();
 
-			if(in_array($param['data'], $d)){
-				return 'ok';
+
+			//key->val to temp_data
+			foreach( $d as $v){
+				if( $v != null ){
+					$id = explode('|', $v)[5];
+					$temp_data[$id] = array();
+
+					array_push($temp_data[$id], $v);
+				}
 			}
 
+			//check
+			foreach($temp_data as $key=>$val){
+				if(  $key == $param ){
+					unset($temp_data[$param]);
+					break;
+				}
+			}
 
+			//write
+
+			$ars = array();
+
+			foreach($temp_data as $key=>$val){
+				array_push($ars, $val);
+			}
+
+			$file = fopen(self::$filename, 'w+');
+			foreach($ars as $get){
+				fwrite($file, $get[0] . "{{%}}");
+			}
+			fclose($file);
+
+			return true;
 		}
 
 		private static function usr_activity(){

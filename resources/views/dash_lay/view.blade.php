@@ -68,7 +68,7 @@
 							<td>
 								Suhu
 							</td>
-							<td style="width: 50%;">
+							<td style="width: 40%;">
 								Keterangan
 							</td>
 							<td>
@@ -100,35 +100,11 @@
 										{{ $activity[$i][4] }}
 									</td>
 									<td>
-										@php $del = $activity[$i][0] . "|" . $activity[$i][1] . "|" . $activity[$i][2] . "|" . $activity[$i][3] . "|" . $activity[$i][3] . "|" . $activity[$i][4]; @endphp
-										<input id="p-@php echo $i; @endphp" value="@php echo $del;@endphp" hidden>
-										<a class="btn btn-solid bg-danger text-white" onclick="$('#view-modal-@php echo $i;@endphp').modal('show');">
+										<a href="/del/data/@php echo $activity[$i][5];@endphp" class="btn btn-solid bg-danger text-white">
 											Hapus
 										</a>
 									</td>
 								</tr>
-
-								<div role='dialog' class="modal fade" id="view-modal-@php echo $i;@endphp" tabindex="-1">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												Apakah kamu yakin ?
-											</div>
-											<div class="modal-body">
-												Hapus data ini ?
-											</div>
-											<div class="modal-footer">
-												<a class="btn btn-solid bg-warning text-white" id="btn-hapus-@php echo $i;@endphp" onclick="del('@php echo $i;@endphp' )">
-													Hapus
-												</a>
-												<a onclick="$('#view-modal-@php echo $i;@endphp').modal('hide');" class="btn btn-solid bg-info text-white">
-													Tutup
-												</a>
-											</div>
-										</div>
-									</div>
-								</div>
-
 
 							@endfor
 						@else
@@ -148,5 +124,7 @@
 $(function() {
   $("#table").tablesorter();
 });
+
+</script>
 
 @endsection

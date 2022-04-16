@@ -24,11 +24,14 @@ class DashboardController extends Controller
         return view('dash_lay.view', ['activity'=>UserActivity::getUserActivity(Session::get('nik'), $name)]);
     }
 
-    public function delete( ){
+    public function delete( $data ){
         //authentication check
 
-        $res = UserActivity::delUserActivity( $_GET );
-        print_r($res);
+        $res = UserActivity::delUserActivity( $data );
+
+        if( $res == true){
+            return redirect()->route('main_view');
+        }
 
     }
 
@@ -39,7 +42,6 @@ class DashboardController extends Controller
         $location = $request->location;
         $temperature = $request->temperature;
         $information = $request->information;
-
 
         $response = UserActivity::addUserActivity(Session::get('nik'), $date, $time, $location, $temperature, $information );
 
