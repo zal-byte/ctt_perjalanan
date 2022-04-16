@@ -1,6 +1,9 @@
 @php
 
-	Session::put('interact', url()->current() );
+
+	$nik = explode('/', url()->current())[count(explode('/',url()->current())) - 1];
+
+	Session::put('interact', str_replace($nik, '', url()->current()) );
 
 @endphp
 
@@ -69,28 +72,36 @@
 					</thead>
 					<tbody>
 						<!-- No, tanggal, waktu, lokasi, suhu, keterangan -->
-						@for($i=0; $i < count($activity);$i++)
-							<tr>
-								<td>
-									{{ $i + 1 }}
-								</td>
-								<td>
-									{{ $activity[$i][0] }}
-								</td>
-								<td>
-									{{ $activity[$i][1] }}
-								</td>
-								<td>
-									{{ $activity[$i][2] }}
-								</td>
-								<td>
-									{{ $activity[$i][3] }}
-								</td>
-								<td>
-									{{ $activity[$i][4] }}
-								</td>
-							</tr>
-						@endfor
+						@if( $activity != null )
+							@for($i=0; $i < count($activity);$i++)
+								<tr>
+									<td>
+										{{ $i + 1 }}
+									</td>
+									<td>
+										{{ $activity[$i][0] }}
+									</td>
+									<td>
+										{{ $activity[$i][1] }}
+									</td>
+									<td>
+										{{ $activity[$i][2] }}
+									</td>
+									<td>
+										{{ $activity[$i][3] }}
+									</td>
+									<td>
+										{{ $activity[$i][4] }}
+									</td>
+								</tr>
+							@endfor
+						@else
+							<p class="text-center">
+								Belum ada catatan, <a href="{{route('main_add')}}" class="text-decoration-none">
+									Tambah
+								</a>
+							</p>
+						@endif
 					</tbody>
 				</table>
 			</div>

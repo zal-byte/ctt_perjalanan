@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -144,8 +145,7 @@
 						        headers: {
 						            'X-CSRF-TOKEN':token
 						        }
-						    });
-
+						    });	
 							$.ajax({
 								type:'POST',
 								headers:{'X-CSRF-TOKEN':token},
@@ -155,7 +155,7 @@
 									var jso = JSON.parse(res);
 									if(jso['status']==1)
 									{
-										window.location.replace("@php echo Session::get('interact'); @endphp");
+										window.location.replace("@php echo Session::get('interact'); @endphp" + nik);
 									}else{
 										$("#res").toggleClass("d-none d-block");
 										$("#res").html(jso['msg']);

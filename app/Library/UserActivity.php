@@ -28,18 +28,21 @@
 
 			$data = self::usr_activity();
 
-			$temp_data = array();
-			$i = 0;
-			foreach( $data as $val ){
-				$temp_data[$i]=array();
-				foreach( explode("|", $val) as $go){
-					array_push( $temp_data[$i], $go);
+			if( $data != null ){
+				$temp_data = array();
+				$i = 0;
+				foreach( $data as $val ){
+					$temp_data[$i]=array();
+					foreach( explode("|", $val) as $go){
+						array_push( $temp_data[$i], $go);
+					}
+					$i++;
 				}
-				$i++;
+			}else{
+				$temp_data = null;
 			}
 
-			
-			
+
 
 			return $temp_data;
 
@@ -63,7 +66,12 @@
 		}
 
 		private static function usr_activity(){
-			$data = explode("\n", trim(file_get_contents(self::$filename)));
+			$txt = trim(file_get_contents(self::$filename));
+			if( strlen($txt) > 0 ){
+				$data = explode("\n", $txt);
+			}else{
+				$data = null;
+			}
 			return $data;
 		}
 	}
