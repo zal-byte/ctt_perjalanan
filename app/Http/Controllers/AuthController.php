@@ -52,7 +52,7 @@ class AuthController extends Controller
     }
 
 
-    public function logout(){
+    public static function logout(){
         Session::forget('login');
         Session::forget("nik");
         return redirect('/auth/login');
