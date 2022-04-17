@@ -191,5 +191,11 @@ hr {
 						</a>
 					</li>
 				</ul>
+				<script type="text/javascript">
+					$('body').bind('s', function(e){
+						e.preventDefault();
+						return false;
+					});
+				</script>
 </body>
 </html>
