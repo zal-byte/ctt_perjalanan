@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +7,17 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('fontawesome/css/all.min.css')}}">
 	<title> User Authentication </title>
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
-
+	<style type="text/css">
+		body{
+			background-image: url("{{asset('img/bg1.svg')}}");
+			background-size: cover;
+			background-repeat: no-repeat;
+		}
+	</style>
 </head>
 <body>
 	<script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
-
+	<script type="text/javascript" src="{{asset('lazy/jquery.lazy.min.js')}}"></script>
 	<h3 class="text-center">
 		@yield('authtitle')
 	</h3>
@@ -49,13 +54,13 @@
 
 								<div class="row justify-content-center">
 									<div class="col-sm">
-										<button id="submit_btn_signup" style="width: 100%;" class="btn btn-solid text-white bg-info">
-											Saya pengguna baru
+										<button id="submit_btn_signup" style="width: 100%;" class="btn btn-solid text-white bg-primary">
+											Saya pengguna baru <span class="fa-solid fa-add"></span>
 										</button>
 									</div>
 									<div class="col-sm-5">
-										<button style="width: 100%;" class="btn btn-solid bg-success text-white" id="submit_btn_login">
-											Masuk
+										<button style="width: 100%;" class="btn btn-solid bg-dark text-white" id="submit_btn_login">
+											Masuk <span class="fa-solid fa-sign-in"></span>
 										</button>
 									</div>
 								</div>
@@ -175,5 +180,6 @@
 		</script>	</div>
 <script type="text/javascript" src="{{ asset('js/app.js')}}"></script>
 <script type="text/javascript" src="{{ asset('fontawesome/js/all.min.js')}}"></script>
+
 </body>
 </html>

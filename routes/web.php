@@ -15,6 +15,13 @@ use App\Library\UserActivity;
 |
 */
 
+Route::get('', function(){
+	if(!Session::get('login')){
+		return redirect('/auth/login');
+	}
+	return redirect('/main/view');
+});
+
 Route::get('/auth/login', function(){
 	if( Session::get('login') ){
 		return redirect('/main/view');

@@ -11,6 +11,12 @@
 </head>
 <body>
 <style>
+	html{
+		position: relative;
+		min-width: 1024px;
+		min-height: 768px;
+		height: 100%;
+	}
 	hr {
   border: 0;
   clear:both;
@@ -20,8 +26,10 @@
   background-color:#FFFF00;
 }
 body{
-	background-color: #f5f5f5;
-	height: 100vh;
+	background-image: url("{{asset('img/bg1.svg')}}");
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 100%;
 }
 
 .hov: hover{
@@ -134,10 +142,10 @@ hr {
 					</p>
 				</div>
 				<div class="modal-footer">
-					<a href="{{route('logout')}}" class="btn btn-solid bg-info text-white text-decoration-none">
+					<a href="{{route('logout')}}" style="width:20%;" class="btn btn-solid bg-dark text-white text-decoration-none">
 						Ya
 					</a>
-					<a onclick="$('#logout-modal').modal('hide');" class="btn btn-solid bg-warning text-white text-decoration-none">
+					<a onclick="$('#logout-modal').modal('hide');" style="width:20%;" class="btn btn-solid bg-warning text-white text-decoration-none">
 						Tidak
 					</a>
 				</div>
