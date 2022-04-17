@@ -74,7 +74,6 @@
 
 									</i>
 								</div>
-								<br>
 								<hr>
 								<div class="row justify-content-center">
 									<div class="col-sm">
