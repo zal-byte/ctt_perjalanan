@@ -13,6 +13,14 @@
 			background-size: cover;
 			background-repeat: no-repeat;
 		}
+
+		.corner_left{
+			position: fixed;
+			left: 0px; bottom: 0px;
+			width: 200px;
+			height: 40px;
+			padding: 5px;
+		}
 	</style>
 </head>
 <body>
@@ -21,6 +29,10 @@
 	<h3 class="text-center">
 		@yield('authtitle')
 	</h3>
+
+	<div class="corner_left text-white">
+		Rizal Solehudin | XII RPL B
+	</div>
 
 	<div class="d-flex justify-content-center">
 

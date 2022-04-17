@@ -43,9 +43,19 @@ hr {
   background-color:black;
   height: 1px;
 }
+		.corner_left{
+			position: fixed;
+			left: 0px; bottom: 0px;
+			width: 200px;
+			height: 40px;
+			padding: 5px;
+		}
 </style>
 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('dist/js/jquery.tablesorter.js')}}"></script>
+<div class="corner_left text-white">
+		Rizal Solehudin | XII RPL B
+	</div>
 	<div class="container p-3 mt-2">
 		<div class="row">
 			<div class="col-md">
