@@ -33,7 +33,7 @@ class AuthController extends Controller
         // print_r($response);
         if( $response['status'] == 1){
             Session::put('login', true);
-
+            Session::put('name', $name);
             echo json_encode($response);
         }else{
             echo json_encode($response);
@@ -55,6 +55,7 @@ class AuthController extends Controller
     public static function logout(){
         Session::forget('login');
         Session::forget("nik");
+        Session::forget('name');
         return redirect('/auth/login');
     }
 

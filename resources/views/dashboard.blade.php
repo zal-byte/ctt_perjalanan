@@ -64,10 +64,10 @@ hr {
 				<div class="card border-0 shadow-sm">
 					<div class="card-body">
 						<h2 class="font-weight-bold">
-							CaPer
+							CaPer ( Catatan Perjalanan )
 						</h2>
 						<p>
-							Catatan Perjalanan
+							<span class="fa fa-user"></span> Selamat datang, @php echo Session::get('name');@endphp.
 						</p>
 								<a href="#" onclick="logout_verify()" class="btn btn-solid bg-danger text-center text-decoration-none text-white mb-2">
 									<span class="fa fa-sign-out"></span> Keluar
