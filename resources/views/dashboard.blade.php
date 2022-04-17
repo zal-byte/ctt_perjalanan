@@ -89,7 +89,7 @@ hr {
 								</li>
 							@endif
 
-							@if(url()->current() == request()->getScheme() . "://" . request()->getHttpHost() . "/main/view")
+							@if(url()->current() == route('main_view'))
 								<li class="list-group-item active">
 									<a href="{{route('main_view')}}" class="nav-link text-white text-center text-decoration-none">
 										<span class="fa-solid fa-note-sticky"></span> Lihat
