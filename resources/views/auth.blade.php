@@ -51,11 +51,11 @@
 		<div class="card shadow-sm border-0 mt-5" >
 				<div class="card-body">
 						<h3 class="text-center mb-2">
-							Catatan Perjalanan | Masuk
+							CaPer
 						</h3>
 						<p class="text-center">
 							<i>
-								Masukan kridensial kamu
+								Catatan Perjalanan
 							</i>
 						</p>
 						<hr>
