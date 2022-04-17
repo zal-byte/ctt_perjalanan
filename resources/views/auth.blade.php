@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="CaPer | Catatan Perjalanan | Masuk, Daftar">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('fontawesome/css/all.min.css')}}">
 	<title> User Authentication </title>
@@ -33,6 +34,8 @@
 <body>
 	<script type="text/javascript" src="{{ asset('js/jquery.min.js')}}"></script>
 	<script type="text/javascript" src="{{asset('lazy/jquery.lazy.min.js')}}"></script>
+	<img src="{{asset('img/png.png')}}" hidden>
+
 	<h3 class="text-center">
 		@yield('authtitle')
 	</h3>

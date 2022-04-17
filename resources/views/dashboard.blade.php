@@ -3,6 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="description" content="CaPer | Catatan Perjalanan | Dashboard">
 	<link rel="stylesheet" type="text/css" href="{{ asset('dist/css/theme.default.min.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/app.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('fontawesome/css/all.min.css')}}">
@@ -50,6 +51,7 @@ hr {
 </style>
 <script type="text/javascript" src="{{asset('js/jquery.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('dist/js/jquery.tablesorter.js')}}"></script>
+<img src="{{asset('img/png.png')}}" hidden>
 <div class="corner_left text-white">
 		Rizal Solehudin | XII RPL B
 	</div>
