@@ -51,13 +51,8 @@
 		<div class="card shadow-sm border-0 mt-5" >
 				<div class="card-body">
 						<h3 class="text-center mb-2">
-							CaPer
+							CaPer ( Catatan Perjalanan )
 						</h3>
-						<p class="text-center">
-							<i>
-								Catatan Perjalanan
-							</i>
-						</p>
 						<hr>
 						<div class="form-group">
 							<form id="myForm">
