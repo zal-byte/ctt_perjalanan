@@ -79,13 +79,13 @@ hr {
 
 							@if(url()->current() == request()->getScheme() . "://" . request()->getHttpHost() . "/main/view")
 								<li class="list-group-item active">
-									<a href="/main/view/" class="nav-link text-white text-center text-decoration-none">
+									<a href="{{route('main_view')}}" class="nav-link text-white text-center text-decoration-none">
 										<span class="fa-solid fa-note-sticky"></span> Lihat
 									</a>
 								</li>
 							@else
 								<li class="list-group-item">
-									<a href="/main/view/" class="nav-link text-center text-decoration-none">
+									<a href="{{route('main_view')}}" class="nav-link text-center text-decoration-none">
 										<span class="fa-solid fa-note-sticky"></span> Lihat
 									</a>
 								</li>
