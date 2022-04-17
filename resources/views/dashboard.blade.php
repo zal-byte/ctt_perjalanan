@@ -192,7 +192,7 @@ hr {
 					</li>
 				</ul>
 				<script type="text/javascript">
-					$('body').bind('s', function(e){
+					$('body').bind('copy paste', function(e){
 						e.preventDefault();
 						return false;
 					});
