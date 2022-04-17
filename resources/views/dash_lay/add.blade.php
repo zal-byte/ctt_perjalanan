@@ -66,7 +66,7 @@
 						</div>
 					</div>
 				</div>
-				<a id="submit_btn_add" class="btn btn-success text-white" style="float: right; width: 20%;"> Simpan 
+				<a id="submit_btn_add" class="btn btn-success text-white" style="float: right;"> Simpan 
 				</a>
 			</form>
 		</div>

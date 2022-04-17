@@ -68,7 +68,7 @@
 							<td>
 								Suhu
 							</td>
-							<td style="width: 40%;">
+							<td>
 								Keterangan
 							</td>
 							<td>

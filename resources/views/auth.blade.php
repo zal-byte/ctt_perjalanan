@@ -10,7 +10,6 @@
 	<style type="text/css">
 		body{
 			background-image: url("{{asset('img/bg1.svg')}}");
-			background-size: cover;
 			background-repeat: no-repeat;
 		}
 
@@ -34,9 +33,11 @@
 		Rizal Solehudin | XII RPL B
 	</div>
 
+
+
 	<div class="d-flex justify-content-center">
 
-		<div class="card shadow-sm border-0 mt-5" style="width: 30%;">
+		<div class="card shadow-sm border-0 mt-5" >
 				<div class="card-body">
 						<h3 class="text-center mb-2">
 							Catatan Perjalanan | Masuk

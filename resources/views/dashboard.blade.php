@@ -13,9 +13,6 @@
 <style>
 	html{
 		position: relative;
-		min-width: 1024px;
-		min-height: 768px;
-		height: 100%;
 	}
 	hr {
   border: 0;
@@ -70,9 +67,12 @@ hr {
 						<p>
 							Catatan Perjalanan
 						</p>
+								<a href="#" onclick="logout_verify()" class="btn btn-solid bg-danger text-center text-decoration-none text-white mb-2">
+									<span class="fa fa-sign-out"></span> Keluar
+								</a>
 						<hr>
 						<br>
-						<ul class="list-group list-group-horizontal" style="width: 100%;">
+						<ul class="list-group list-group-horizontal">
 							@if( url()->current() == route('main_welcome'))
 								<li class="list-group-item active">
 									<a href="{{route('main_welcome')}}" class="nav-link text-white text-center text-decoration-none">
@@ -115,14 +115,6 @@ hr {
 									</a>
 								</li>
 							@endif
-
-
-
-							<li onclick="logout_verify()" class="list-group-item btn-solid btn bg-danger">
-								<a href="#" class="nav-link text-center text-decoration-none text-white">
-									<span class="fa fa-sign-out"></span> Keluar
-								</a>
-							</li>
 						</ul>
 
 
