@@ -9,7 +9,9 @@
 	<meta name="csrf-token" content="{{ csrf_token() }}" />
 	<style type="text/css">
 		body{
+			height: 100vh;
 			background-image: url("{{asset('img/bg1.svg')}}");
+			background-size: cover;
 			background-repeat: no-repeat;
 		}
 
@@ -19,6 +21,12 @@
 			width: 200px;
 			height: 40px;
 			padding: 5px;
+		}
+			@media only screen and (max-width: 768px){
+
+			#submit_btn_login{
+				margin-top: 10px;
+			}
 		}
 	</style>
 </head>
@@ -35,7 +43,7 @@
 
 
 
-	<div class="d-flex justify-content-center">
+	<div class="d-flex justify-content-center p-0">
 
 		<div class="card shadow-sm border-0 mt-5" >
 				<div class="card-body">
@@ -67,12 +75,12 @@
 
 								<div class="row justify-content-center">
 									<div class="col-sm">
-										<button id="submit_btn_signup" style="width: 100%;" class="btn btn-solid text-white bg-primary">
+										<button id="submit_btn_signup" style="width: 100%;" class="btn btn-solid text-white bg-primary p-1">
 											Saya pengguna baru <span class="fa-solid fa-add"></span>
 										</button>
 									</div>
 									<div class="col-sm-5">
-										<button style="width: 100%;" class="btn btn-solid bg-dark text-white" id="submit_btn_login">
+										<button style="width: 100%;" class="p-1 btn btn-solid bg-dark text-white" id="submit_btn_login">
 											Masuk <span class="fa-solid fa-sign-in"></span>
 										</button>
 									</div>
