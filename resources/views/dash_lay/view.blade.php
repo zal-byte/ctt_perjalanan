@@ -100,7 +100,7 @@
 										{{ $activity[$i][4] }}
 									</td>
 									<td>
-										<a href="/del/data/@php echo $activity[$i][5];@endphp" class="btn btn-solid bg-danger text-white">
+										<a href="/del/data/@php echo $activity[$i][5];@endphp" onclick="return confirm('Hapus ?')" class="btn btn-solid bg-danger text-white">
 											Hapus
 										</a>
 									</td>

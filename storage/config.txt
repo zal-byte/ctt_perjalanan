@@ -1,8 +1,0 @@
-123|root
-12|ROOT
-444|root
-122|root
-3333|root
-999|root
-000|root
-0003|root
