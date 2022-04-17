@@ -75,7 +75,7 @@
 									</i>
 								</div>
 								<br>
-
+								<hr>
 								<div class="row justify-content-center">
 									<div class="col-sm">
 										<button id="submit_btn_signup" style="width: 100%;" class="btn btn-solid text-white bg-primary p-1">
