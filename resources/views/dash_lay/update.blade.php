@@ -8,13 +8,17 @@
 					@csrf
 					<input value="{{ $nik }}" hidden name="nik">
 					<input value="{{ $identifier }}" hidden name="identifier">
+					@php
+					 $previous_activity = $date . "|". $time . "|" . $location . "|" . $temperature . "|" . $information . "|" . $identifier .  "{{%}}";
+					@endphp
+					<input value="@php echo $previous_activity; @endphp" hidden name="previous_activity">
 					<div class="form-group">
 						<div class="row mb-3">
 							<label for="date" class="col-sm-2 col-form-label">
 								Tanggal
 							</label>
 							<div class="col-sm-3">
-								<input type="date" class="form-control" name="date" placeholder="col-form-label">
+								<input type="date" class="form-control" value="{{$date}}" name="date" placeholder="col-form-label">
 							</div>
 						</div>
 						<div class="row mb-3">
@@ -22,7 +26,7 @@
 								Jam
 							</label>
 							<div class="col-sm-3">
-								<input type="time" class="form-control" name="time" placeholder="col-form-label">
+								<input type="time" value="{{$time}}" class="form-control" name="time" placeholder="col-form-label">
 							</div>
 						</div>
 						<div class="row mb-3">
@@ -30,7 +34,7 @@
 								Lokasi
 							</label>
 							<div class="col-sm">
-								<input type="text" class="form-control" name="location">
+								<input type="text" value="{{$location}}" class="form-control" name="location">
 							</div>
 						</div>
 						<div class="row mb-3">
@@ -39,7 +43,7 @@
 							</label>
 							<div class="col-sm-3">
 								<div class="input-group">
-									<input type="number" step="any" class="form-control" name="temperature">
+									<input type="number" value="{{$temperature}}" step="any" class="form-control" name="temperature">
 									<div class="input-group-text">
 										<span>&#8451;</span>
 									</div>
@@ -51,7 +55,7 @@
 								Keterangan
 							</label>
 							<div class="col-sm">
-								<textarea class="form-control" rows="5" name="information"></textarea>
+								<textarea class="form-control" rows="5" name="information">{{$information}}</textarea>
 							</div>
 						</div>
 						<div class="row mb-3">

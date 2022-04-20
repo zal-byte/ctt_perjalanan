@@ -100,7 +100,7 @@
 										{{ $activity[$i][4] }}
 									</td>
 									<td>
-										<a href="/update/activity/@php echo $activity[$i][5]; @endphp/@php echo Session::get('nik'); @endphp" class="btn btn-solid bg-warning text-white">
+										<a href="/update/activity/{{ $activity[$i][5]}}/@php echo Session::get('nik'); @endphp/{{ $activity[$i][0]}}/{{ $activity[$i][1]}}/{{$activity[$i][2]}}/{{$activity[$i][3]}}/{{$activity[$i][4]}}" class="btn btn-solid bg-warning text-white">
 											Ubah
 										</a>
 									</td>

@@ -180,6 +180,7 @@
 									{
 										window.location.replace("@php echo Session::get('interact'); @endphp");
 									}else{
+										$("#res").addClass("bg-danger");
 										$("#res").toggleClass("d-none d-block");
 										$("#res").html(jso['msg']);
 									}

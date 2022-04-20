@@ -140,26 +140,18 @@
 			return true;
 		}
 
-		public static function update_activity( $identifier, $date, $time, $location, $temperature, $information, $nik ){
+		public static function update_activity( $previous_activity, $new_activity, $nik ){
 			self::checkUserActivity( $nik );
-			$user_activity = self::usr_activity();	
-
-			$temp_data = array();
-
-			foreach( $user_activity as $go ){
-				if( $go !=  null ){
-					$id = explode("|", $go)[5];
-					$temp_data[$id] = array();
-
-					array_push( $temp_data[$id], $go);
-				}
+	
+			$raw_data = file_get_contents(self::$filename);
+			$file = fopen(self::$filename, 'w+');
+			
+			$updated = str_replace( $previous_activity, $new_activity, $raw_data);
+			if( fwrite( $file, $updated)){
+				return array('status'=>1);
+			}else{
+				return array('status'=>0,'msg'=>'Gagal memperbarui aktifitas');
 			}
-
-			$format = $date . "|" . $time . "|" . $location . "|" . $temperature . "|" . $information . "|" . $identifier . "{{%}}";
-
-			return $temp_data;
-
-
 		}
 
 		private static function usr_activity(){
