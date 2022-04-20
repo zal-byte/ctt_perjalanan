@@ -2,6 +2,7 @@
 
 	namespace App\Library;
 	use Illuminate\Support\Facades\Session;
+	use Illuminate\Support\Facades\Crypt;
 
 	class UserActivity{
 		private static $instance = null;
@@ -70,16 +71,22 @@
 
 			$identifier = self::get_identifier();
 
+			$data = file_get_contents(self::$filename);
+
+			if( $data != null ){
+				$data = Crypt::decrypt( $data );
+			}
+
+
 			$format = $date . "|" . $time . "|" . $location . "|" . $temperature . "|" . $information . "|" . $identifier ."{{%}}";
 
-			$file = fopen(self::$filename, 'a+');
+			$final = Crypt::encrypt( $data . $format );
 
-			if( fwrite( $file, $format) ){
+			if( file_put_contents(self::$filename, $final)){
 				return array('status'=>1,'msg'=>'Catatan berhasil ditambahkan');
 			}else{
-				return array('status'=>0, 'msg'=>'Gagal menambahkan catatan');
+				return array('status'=>0,'msg'=>'Gagal menambahkan catatan');
 			}
-			fclose($file);
 
 		}
 
@@ -157,6 +164,7 @@
 		private static function usr_activity(){
 			$txt = file_get_contents(self::$filename);
 			if( strlen($txt) > 0 ){
+				$txt = Crypt::decrypt( $txt );
 				$data = explode("{{%}}", $txt);
 			}else{
 				$data = null;

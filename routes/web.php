@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Library\UserActivity;
+use Illuminate\Support\Facades\Crypt;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes

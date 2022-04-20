@@ -121,6 +121,7 @@
 					url:"{{route('add_activity')}}",
 					data:data,
 					success:function( res ){
+						console.log( res );
 						var jso = JSON.parse( res );
 						if( jso['status'] == 1){
 

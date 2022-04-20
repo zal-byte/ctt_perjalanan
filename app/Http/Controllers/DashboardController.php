@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Library\UserActivity;
-
+use Illuminate\Support\Facades\Crypt;
 UserActivity::getInstance();
 
 class DashboardController extends Controller
@@ -50,7 +50,11 @@ class DashboardController extends Controller
     }
 
     public function update_form( Request $data ){
-        return view('dash_lay.update', ['identifier'=>$data->identifier,'nik'=>$data->nik,'date'=>$data->date, 'time'=>$data->time, 'location'=>$data->location, 'temperature'=>$data->temperature,'information'=>$data->information]);
+        return view('dash_lay.update', ['identifier'=>$this->dec($data->identifier),'nik'=>$this->dec($data->nik),'date'=>$this->dec($data->date), 'time'=>$this->dec($data->time), 'location'=>$this->dec($data->location), 'temperature'=>$this->dec($data->temperature),'information'=>$this->dec($data->information)]);
+    }
+
+    private function dec( $val ){
+        return Crypt::decrypt($val);
     }
 
     public function update_post( Request $request ){
