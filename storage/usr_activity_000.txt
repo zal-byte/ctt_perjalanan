@@ -1,1 +1,0 @@
-2022-04-20|08:52|Bandung|120|Hello world how are you today ?|000_625f675583a08{{%}}2022-04-21|09:54|Jakarta|90|Indonesian rupiah|000_625f67af31e99{{%}}2022-04-20|09:57|Cikuya|90|Kyou wa ii tenki desune|000_625f687997daa{{%}}2022-04-20|12:02|Bandung|12.0|Hello world|000_625f774abcb27{{%}}

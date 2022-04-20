@@ -59,18 +59,24 @@
 			$format = $nik . "|" . $name . "\n";
 
 
-			if( in_array($nik, self::getNik($data))){
-				//user already exists
-				return array('status'=>0,'msg'=>'NIK ini telah terdaftar.');
+			if(is_numeric($nik) ){
+					if( in_array($nik, self::getNik($data))){
+						//user already exists
+						return array('status'=>0,'msg'=>'NIK ini telah terdaftar.');
+					}else{
+						//continue
+						if( fwrite($file, $format) ){
+							return array('status'=>1,'msg'=>'Daftar berhasil');
+						}else{
+							return array('status'=>0,'msg'=>'Gagal daftar');
+						}
+						fclose($file);
+					}	
 			}else{
-				//continue
-				if( fwrite($file, $format) ){
-					return array('status'=>1,'msg'=>'Daftar berhasil');
-				}else{
-					return array('status'=>0,'msg'=>'Gagal daftar');
-				}
-				fclose($file);
+				return array('status'=>0, 'msg'=>'NIK yang kamu masukan bukan angka');
 			}
+
+
 		}
 
 		private static function getConfig(){

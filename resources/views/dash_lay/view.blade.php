@@ -100,8 +100,8 @@
 										{{ $activity[$i][4] }}
 									</td>
 									<td>
-										<a href="/del/data/@php echo $activity[$i][5];@endphp" onclick="return confirm('Hapus ?')" class="btn btn-solid bg-danger text-white">
-											Hapus
+										<a href="/update/activity/@php echo $activity[$i][5]; @endphp" class="btn btn-solid bg-warning text-white">
+											Ubah
 										</a>
 									</td>
 								</tr>
@@ -124,7 +124,6 @@
 $(function() {
   $("#table").tablesorter();
 });
-
 </script>
 
 @endsection

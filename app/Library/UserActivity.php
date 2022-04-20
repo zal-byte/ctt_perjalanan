@@ -22,9 +22,12 @@
 			}
 		}
 
+
+
 		public static function identifier(){
 			Session::put('identifier', Session::get('nik') ."_".uniqid());
 		}
+
 		public static function get_identifier(){
 			return Session::get('identifier');
 		}
@@ -57,10 +60,14 @@
 
 		}
 
+
+
 		public static function addUserActivity( $nik, $date, $time, $location, $temperature, $information ){
 
 			self::checkUserActivity( $nik );
+
 			self::identifier();
+
 			$identifier = self::get_identifier();
 
 			$format = $date . "|" . $time . "|" . $location . "|" . $temperature . "|" . $information . "|" . $identifier ."{{%}}";
@@ -74,6 +81,21 @@
 			}
 			fclose($file);
 
+		}
+
+		public static function getUserActivityIden( $identifier ){
+			$data = self::usr_activity();
+			
+			$temp_data = array();
+
+			foreach( $data as $v){
+				if( $v != null ){
+					$id = explode('|', $v)[5];
+					$temp_data[$id] = array();
+
+					array_push($temp_data[$id], $v);
+				}
+			}
 		}
 
 		public static function delUserActivity($param){
@@ -116,6 +138,15 @@
 			fclose($file);
 
 			return true;
+		}
+
+		public static function update_activity( $identifier, $date, $time, $location, $temperature, $information ){
+
+			$user_activity = self::usr_activity();
+
+
+
+
 		}
 
 		private static function usr_activity(){
