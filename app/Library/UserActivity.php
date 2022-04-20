@@ -155,7 +155,9 @@
 				}
 			}
 
-			return $temp_data[$identifier];
+			$format = $date . "|" . $time . "|" . $location . "|" . $temperature . "|" . $information . "|" . $identifier . "{{%}}";
+
+			return $temp_data;
 
 
 		}
