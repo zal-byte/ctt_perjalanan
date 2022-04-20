@@ -49,30 +49,28 @@ class DashboardController extends Controller
 
     }
 
-    public function update_form( $identifier ){
-        return view('dash_lay.update', ['identifier'=>$identifier]);
+    public function update_form( $identifier, $nik ){
+        return view('dash_lay.update', ['identifier'=>$identifier,'nik'=>$nik]);
     }
 
     public function update_post( Request $request ){
-        
-    }
-
-    public function update_activity( Request $request ){
-
-        $identifier = $request->identifier;
+           $identifier = $request->identifier;
         $date = $request->date;
         $time = $request->time;
         $location = $request->location;
         $temperature = $request->temperature;
         $information = $request->information;
-
-        $response = UserActivity::update( $identifier, $date, $time, $location, $temperature, $information );
+        $nik = $request->nik;
+        
+        $response = UserActivity::update_activity( $identifier, $date, $time, $location, $temperature, $information, $nik );
         
         echo "<pre>";
         print_r( $response );
         echo "</pre>";
+ 
+    }   
 
-    }
+
 
     
 

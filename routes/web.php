@@ -36,7 +36,7 @@ Route::post('/add/usr_activity', [DashboardController::class, 'add_activity'])->
 Route::post('/update', [DashboardController::class, 'update_post'])->name('update_activity');
 
 
-Route::get('/update/activity/{identifier}', [DashboardController::class, 'update_form']);
+Route::get('/update/activity/{identifier}/{nik}', [DashboardController::class, 'update_form']);
 
 Route::get('/main/welcome', function(){
 	if( !Session::get('login')){

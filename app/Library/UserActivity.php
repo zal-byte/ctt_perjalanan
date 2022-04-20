@@ -140,11 +140,22 @@
 			return true;
 		}
 
-		public static function update_activity( $identifier, $date, $time, $location, $temperature, $information ){
+		public static function update_activity( $identifier, $date, $time, $location, $temperature, $information, $nik ){
+			self::checkUserActivity( $nik );
+			$user_activity = self::usr_activity();	
 
-			$user_activity = self::usr_activity();
+			$temp_data = array();
 
+			foreach( $user_activity as $go ){
+				if( $go !=  null ){
+					$id = explode("|", $go)[5];
+					$temp_data[$id] = array();
 
+					array_push( $temp_data[$id], $go);
+				}
+			}
+
+			return $temp_data[$identifier];
 
 
 		}

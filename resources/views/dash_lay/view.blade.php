@@ -100,7 +100,7 @@
 										{{ $activity[$i][4] }}
 									</td>
 									<td>
-										<a href="/update/activity/@php echo $activity[$i][5]; @endphp" class="btn btn-solid bg-warning text-white">
+										<a href="/update/activity/@php echo $activity[$i][5]; @endphp/@php echo Session::get('nik'); @endphp" class="btn btn-solid bg-warning text-white">
 											Ubah
 										</a>
 									</td>
