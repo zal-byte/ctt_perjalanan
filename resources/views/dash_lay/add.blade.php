@@ -50,7 +50,7 @@
 						</label>
 						<div class="col-sm-3">
 							<div class="input-group">
-								<input type="number" class="form-control" id="temperature">
+								<input type="number" step="any" class="form-control" id="temperature">
 								<div class="input-group-text">
 									<span>&#8451;</span>
 								</div>
